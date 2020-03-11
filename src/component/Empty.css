@@ -1,0 +1,22 @@
+.Empty {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-size: var(--font-large);
+    text-align: center;
+    padding: 0 var(--space-medium);
+    color: var(--color-primary);
+}
+
+.Empty img {
+    max-width: 80%;
+    margin-bottom: var(--space-medium);
+}
+
+@media only screen and (min-width: 1280px) {
+    .Empty {
+        font-size: var(--font-x-large);
+    }
+}

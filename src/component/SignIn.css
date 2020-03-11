@@ -1,0 +1,25 @@
+.SignIn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.SignIn__Image {
+    max-width: 60%;
+    margin-bottom: var(--space-medium);
+}
+
+.SignIn__Button {
+    background: var(--color-border);
+    border: 0;
+    font-size: var(--font-normal);
+    padding: var(--space-small);
+}
+
+.SignIn__Button:hover,
+.SignIn__Button:focus,
+.SignIn__Button:active {
+    background: var(--color-alt-background);
+}

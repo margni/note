@@ -1,0 +1,46 @@
+.NoteList {
+    flex: 1;
+    list-style: none;
+    margin: 0;
+    overflow: auto;
+    padding: 0;
+}
+
+.NoteList__Item {
+    position: relative;
+}
+
+.NoteList__Button {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-primary);
+    cursor: pointer;
+    font-size: var(--font-normal);
+    height: var(--space-x-large);
+    line-height: var(--space-x-large);
+    overflow: hidden;
+    padding: 0 var(--space-medium);
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.NoteList__Button:focus,
+.NoteList__Button:hover,
+.NoteList__Button:active {
+    background: var(--color-alt-background);
+    outline: none;
+}
+
+.NoteList__Item:last-child. .NoteList__Button {
+    border-bottom: none;
+}
+
+.NoteList__Pin {
+    position: absolute;
+    right: var(--space-small);
+    top: 50%;
+    transform: translateY(-50%);
+}

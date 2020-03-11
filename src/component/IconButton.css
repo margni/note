@@ -1,0 +1,45 @@
+.IconButton {
+    animation: fade-in .3s ease;
+    background: transparent;
+    border: 0;
+    box-sizing: content-box;
+    color: var(--color-accent);
+    cursor: pointer;
+    font-size: var(--font-large);
+    height: var(--font-x-large);
+    padding: .8rem;
+    transition: color .3s;
+    width: var(--font-x-large);
+}
+
+.IconButton--large {
+    padding: 1.2rem;
+}
+
+.IconButton--right {
+    float: right;
+}
+
+.IconButton--secondary {
+    color: var(--color-primary);
+}
+
+.IconButton:focus,
+.IconButton:hover {
+    color: var(--color-accent-secondary);
+    outline: none;
+}
+
+.IconButton--secondary:hover,
+.IconButton--secondary:hover {
+    color: var(--color-secondary);
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,7 @@
+.Fab {
+    border-radius: 50%;
+    background: var(--color-background);
+    bottom: var(--space-small);
+    position: absolute;
+    right: var(--space-small);
+}

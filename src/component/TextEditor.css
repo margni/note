@@ -1,0 +1,14 @@
+.TextEditor {
+    border: 0;
+    box-sizing: border-box;
+    color: var(--color-primary);
+    flex: 1;
+    font-size: 1.6rem;
+    padding: 1.3rem 2.4rem;
+    resize: none;
+    width: 100%;
+}
+
+.TextEditor:focus {
+    outline:none;
+}

@@ -1,0 +1,23 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "note",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "owner",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "time",
+          "order": "DESCENDING"
+        },
+        {
+          "fieldPath": "pin",
+          "order": "DESCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
