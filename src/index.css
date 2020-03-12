@@ -7,6 +7,7 @@
     --color-border: #EEE;
     --color-primary: #555;
     --color-secondary: #999;
+    --color-tertiary: #CCC;
     --color-accent-secondary: #9BF;
     --font-small: 1.3rem;
     --font-normal: 1.6rem;
@@ -49,8 +50,8 @@ main {
 }
 
 main > img {
-    max-width: 60%;
     animation: pulse 1.5s infinite;
+    max-width: 60%;
 }
 
 button, textarea {

@@ -21,7 +21,7 @@
 }
 
 .IconButton--secondary {
-    color: var(--color-primary);
+    color: var(--color-secondary);
 }
 
 .IconButton:focus,
@@ -32,7 +32,7 @@
 
 .IconButton--secondary:hover,
 .IconButton--secondary:hover {
-    color: var(--color-secondary);
+    color: var(--color-tertiary);
 }
 
 @keyframes fade-in {
