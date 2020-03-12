@@ -23,3 +23,14 @@
 .SignIn__Button:active {
     background: var(--color-alt-background);
 }
+
+.SignIn__Footer {
+    margin-top: var(--space-medium);
+    font-size: var(--font-small);
+}
+
+.SignIn__Link,
+.SignIn__Link:visited {
+    text-decoration: none;
+    color: var(--color-primary);
+}

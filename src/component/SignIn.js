@@ -8,4 +8,5 @@ import './SignIn.css';
 export const SignIn = ({onClick}) => <section className="SignIn">
     <img alt="mNote" className="SignIn__Image" src={logo} />
     <button className="SignIn__Button" onClick={onClick}>Sign in with Google</button>
+    <p className="SignIn__Footer">© <a className="SignIn__Link" href="http://margni.com">Margni Ltd.</a> 2020</p>
 </section>;

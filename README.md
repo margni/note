@@ -4,6 +4,8 @@
 
 mNote is an extremely minimal note taking web app.
 
+*© Margni Ltd. 2020*
+
 ## About
 
 This is built as a technical demonstration for a bare-bones React+Firebase PWA.
