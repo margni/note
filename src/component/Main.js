@@ -16,7 +16,7 @@ export const Main = ({notes, selectedNote, onSelect, onSignOut, onUpdate, onCrea
                 {selectedNote ? '' : <IconButton name="sign-out" onClick={onSignOut} position="right"></IconButton>}
             </AppBar>
             {selectedNote ? '' : <Fab><IconButton name="new" onClick={() => onCreate()} size="large"></IconButton></Fab>}
-            {notes.length
+            {notes && notes.length
                 ? <NoteList notes={notes} onSelect={(note) => onSelect(note)} onTogglePin={(note) => onTogglePin(note)}></NoteList>
                 : <Empty message="You haven't taken any notes yet." />
             }
