@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './NoteList.css';
-import {IconButton} from "./IconButton";
+import { IconButton } from './IconButton';
 
 export const NoteList = ({notes, onSelect, onTogglePin}) => <ol className="NoteList">
     {notes.map((note) =>
