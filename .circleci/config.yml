@@ -11,8 +11,8 @@ jobs:
           steps:
             - run: npm install
             - run: npm test -- --reporters=jest-junit
-  store_test_results:
-    path: junit.xml
+            - store_test_results:
+                path: junit.xml
 workflows:
   build-and-test:
     jobs:
