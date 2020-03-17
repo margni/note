@@ -8,7 +8,7 @@
     font-size: var(--font-large);
     height: var(--font-x-large);
     padding: .8rem;
-    transition: color .3s;
+    transition: color var(--animation-standard);
     width: var(--font-x-large);
 }
 
@@ -30,7 +30,7 @@
     outline: none;
 }
 
-.IconButton--secondary:hover,
+.IconButton--secondary:focus,
 .IconButton--secondary:hover {
     color: var(--color-tertiary);
 }

@@ -1,6 +1,9 @@
 @import 'style.css';
 
 :root {
+    --animation-short: .15s;
+    --animation-standard: .3s;
+    --animation-long: .7s;
     --color-accent: #15C;
     --color-background: #FFF;
     --color-alt-background: #F6F6F6;

@@ -35,20 +35,29 @@ Does not use Flux style pattern but does use Context for simplicity's sake. This
 - Catch and log firestore and auth errors.
 - Install prompt/enhanced process.
 - FAB should slide off screen on scroll down and back on on scroll up.
+- Note colours/icons/etc.
+- Note sharing (Would be via email and only work if the use is already signed up for simplicity's sake).
+  - Just need to extend the security rules, could store a map of uid->email for shares.
+  - Share would allow collaboration, or viewing only?
+- Text search (would be good as it would require using an external service).
+- Delete new empty notes (ie click new then immediately close the note).
+- Delete notes which are edited to have no contents.
+- Passive notifications (e.g. when a new note is deleted).
+- Might it be a good idea to disable running multiple instances (i.e. over multiple tabs)?
+- Display a note's text up till the first double new line (i.e. treat the first line as the title).
+- Animate reorder on pin/unpin.
 
 ### Bugs
 
 - On iOS new note's textarea is not focused (works as expected when editing existing).
-- Auth seems unstable, could be something to do with react lifecycle?
-- General instability on mobile, may be resolved now.
 
 ### Code Quality
 
 - Improve firebase encapsulation.
-- Components, separation of concerns and context usage is all a mess.
+- Not happy with contexts.
 - Write Tests!
 - CI pipeline.
-- Tighten linting.
+- Tighten linting rules.
 
 ## Available Scripts
 

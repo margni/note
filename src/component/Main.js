@@ -11,7 +11,7 @@ import './Main.css';
 
 export const Main = ({notes, selectedNote, onSelect, onSignOut, onUpdate, onCreate, onDelete, onTogglePin}) => {
     return <>
-        <section className="Main__Notes">
+        <section className={'Main__Notes' + (selectedNote ? ' Main__Notes--collapsed' : '')}>
             <AppBar>
                 {selectedNote ? '' : <IconButton name="sign-out" onClick={onSignOut} position="right"></IconButton>}
             </AppBar>
