@@ -55,7 +55,7 @@ Does not use Flux style pattern but does use Context for simplicity's sake. This
 
 - Improve firebase encapsulation.
 - Not happy with contexts.
-- Write Tests!
+- Write more tests!
 - CI pipeline.
 - Tighten linting rules.
 
