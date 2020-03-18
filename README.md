@@ -42,12 +42,16 @@ Does not use Flux style pattern but does use Context for simplicity's sake. This
   - Just need to extend the security rules, could store a map of uid->email for shares.
   - Share would allow collaboration, or viewing only?
 - Text search (would be good as it would require using an external service).
+  - Show history of previous searches (will also require a clear history option).
 - Delete new empty notes (ie click new then immediately close the note).
 - Delete notes which are edited to have no contents.
 - Passive notifications (e.g. when a new note is deleted).
 - Might it be a good idea to disable running multiple instances (i.e. over multiple tabs)?
 - Display a note's text up till the first double new line (i.e. treat the first line as the title).
 - Animate reorder on pin/unpin.
+- Delete account (i.e. clear all user data) ability.
+- Multi-lingual (especially considering there is so little text to translate).
+- Should pinning and unpinning change the update time?
 
 ### Bugs
 
@@ -60,7 +64,6 @@ Does not use Flux style pattern but does use Context for simplicity's sake. This
 - Improve firebase encapsulation.
 - Not happy with contexts.
 - Write more tests!
-- CI pipeline.
 - Tighten linting rules.
 
 ## Available Scripts
