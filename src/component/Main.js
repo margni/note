@@ -9,25 +9,34 @@ import { TextEditor } from './TextEditor';
 
 import './Main.css';
 
-export const Main = ({notes, selectedNote, onSelect, onSignOut, onUpdate, onCreate, onDelete, onTogglePin}) => {
+export const Main = ({notes, onClose, onCreate, onDelete, onSelect, onSignOut, onTogglePin, onUpdate, selectedNote}) => {
     return <>
         <section className={'Main__Notes' + (selectedNote ? ' Main__Notes--collapsed' : '')}>
             <AppBar>
-                {selectedNote ? '' : <IconButton name="sign-out" onClick={onSignOut} position="right"></IconButton>}
+                {selectedNote ? '' : <IconButton name="sign-out" onClick={onSignOut} position="right" />}
             </AppBar>
-            {selectedNote ? '' : <Fab><IconButton name="new" onClick={() => onCreate()} size="large"></IconButton></Fab>}
+            {selectedNote ? '' : <Fab><IconButton name="new" onClick={() => onCreate()} size="large" /></Fab>}
             {notes && notes.length
-                ? <NoteList notes={notes} onSelect={(note) => onSelect(note)} onTogglePin={(note) => onTogglePin(note)}></NoteList>
+                ? <NoteList
+                    notes={notes}
+                    onSelect={(note) => onSelect(note)}
+                    onTogglePin={(note) => onTogglePin(note)}
+                />
                 : <Empty message="You haven't taken any notes yet." />
             }
         </section>
         {selectedNote
             ? <section className="Main__Note">
                 <AppBar>
-                    <IconButton name="back" onClick={() => onSelect()}></IconButton>
-                    <IconButton secondary name="delete" onClick={() => onDelete(selectedNote)} position="right"></IconButton>
+                    <IconButton name="back" onClick={() => onClose()} />
+                    <IconButton name="delete" onClick={() => onDelete(selectedNote)} position="right" secondary />
                 </AppBar>
-                <TextEditor key={selectedNote.id} debounce={2000} value={selectedNote.text} onChange={(text) => onUpdate({...selectedNote, text})}></TextEditor>
+                <TextEditor
+                    debounce={2000}
+                    key={selectedNote.id}
+                    onChange={(text) => onUpdate({...selectedNote, text})}
+                    value={selectedNote.text}
+                />
             </section>
             : ''
         }

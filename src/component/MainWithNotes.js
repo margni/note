@@ -13,12 +13,13 @@ export const MainWithNotes = ({onSignOut}) => {
 
     return <Main
         notes={notes}
-        selectedNote={selectedNote ? notes.find((note) => note.id === selectedNote) : null}
-        onSelect={(note) => selectNote(note ? note.id : null)}
-        onUpdate={(note) => update(note)}
+        onClose={() => selectNote()}
         onCreate={() => create().then((note) => selectNote(note.id))}
         onDelete={(note) => deleteNote(note).then(() => selectNote())}
-        onTogglePin={(note) => togglePin(note)}
+        onSelect={(note) => selectNote(note.id)}
         onSignOut={() => onSignOut()}
+        onTogglePin={(note) => togglePin(note)}
+        onUpdate={(note) => update(note)}
+        selectedNote={selectedNote ? notes.find((note) => note.id === selectedNote) : null}
     />;
 };

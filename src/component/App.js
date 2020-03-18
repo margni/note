@@ -13,7 +13,7 @@ export const App = () =>
             <AuthContext.Consumer>
                 { ({signIn, signOut, user}) => user
                     ? <MainWithNotes user={user} onSignOut={signOut} />
-                    : <SignIn onClick={() => signIn()}></SignIn>
+                    : <SignIn onClick={() => signIn()} />
                 }
             </AuthContext.Consumer>
         </NoteProvider>

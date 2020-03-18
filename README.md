@@ -52,6 +52,8 @@ Does not use Flux style pattern but does use Context for simplicity's sake. This
 ### Bugs
 
 - On iOS new note's textarea is not focused (works as expected when editing existing).
+- Opening the app while offline results in a blank screen for a considerable amount of time.
+- App doesnt navigate to new notes while offline (promise not resolved).
 
 ### Code Quality
 
