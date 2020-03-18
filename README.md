@@ -14,6 +14,16 @@ This is built as a technical demonstration for a bare-bones React+Firebase PWA.
 
 ***Please note this is still a work in progress.***
 
+### Features
+
+- PWA
+  - Installable/service worker
+  - Works Offline
+  - Fast, minimal, native/app-like interface
+  - Dark theme support
+- Uses Firestore realtime database to sync changes instantaneously
+- Pin Notes
+
 ### Appearance
 
 Designed to be extremely minimal. Design and layout component architecture inspired by Material Design.
