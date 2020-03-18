@@ -1,5 +1,7 @@
 # mNote
 
+![Margni](https://circleci.com/gh/margni/note.svg?style=svg)
+
 [note.margni.com](https://note.margni.com)
 
 mNote is an extremely minimal note taking web app.
