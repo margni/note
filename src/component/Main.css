@@ -17,6 +17,10 @@
     right: 0;
 }
 
+.Main__NotePrimaryActions {
+    flex: 1;
+}
+
 @keyframes slide-in {
     0% {
         transform: translateX(100%);

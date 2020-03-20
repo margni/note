@@ -1,5 +1,6 @@
 .AppBar {
     background: var(--color-border);
-    padding: 0 var(--space-small);
+    display: flex;
     height: var(--space-x-large);
+    padding: 0 var(--space-small);
 }

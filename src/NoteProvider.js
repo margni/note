@@ -39,3 +39,5 @@ export const NoteProvider = ({children}) => {
         {children}
     </NoteContext.Provider>
 };
+
+export const useNotes = () => useContext(NoteContext);

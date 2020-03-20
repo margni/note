@@ -5,15 +5,17 @@ import { Empty } from './Empty';
 import { Fab } from './Fab';
 import { IconButton } from './IconButton';
 import { NoteList } from './NoteList';
+import { Search } from './Search';
 import { TextEditor } from './TextEditor';
 
 import './Main.css';
 
-export const Main = ({notes, onClose, onCreate, onDelete, onSelect, onSignOut, onTogglePin, onUpdate, selectedNote}) => {
+export const Main = ({notes, onClose, onCreate, onDelete, onSearch, onSelect, onSignOut, onTogglePin, onUpdate, query, selectedNote}) => {
     return <>
         <section className={'Main__Notes' + (selectedNote ? ' Main__Notes--collapsed' : '')}>
             <AppBar>
-                {selectedNote ? '' : <IconButton name="sign-out" onClick={onSignOut} position="right" />}
+                <div className="Main__NotePrimaryActions"><Search onChange={(query) => onSearch(query)} value={query} /></div>
+                {selectedNote ? '' : <IconButton name="sign-out" onClick={onSignOut} position="right" secondary />}
             </AppBar>
             {selectedNote ? '' : <Fab><IconButton name="new" onClick={() => onCreate()} size="large" /></Fab>}
             {notes && notes.length
@@ -22,13 +24,13 @@ export const Main = ({notes, onClose, onCreate, onDelete, onSelect, onSignOut, o
                     onSelect={(note) => onSelect(note)}
                     onTogglePin={(note) => onTogglePin(note)}
                 />
-                : <Empty message="You haven't taken any notes yet." />
+                : <Empty message={query ? 'No results.' : 'You haven\'t taken any notes yet.'} />
             }
         </section>
         {selectedNote
             ? <section className="Main__Note">
                 <AppBar>
-                    <IconButton name="back" onClick={() => onClose()} />
+                    <div className="Main__NotePrimaryActions"><IconButton name="back" onClick={() => onClose()} /></div>
                     <IconButton name="delete" onClick={() => onDelete(selectedNote)} position="right" secondary />
                 </AppBar>
                 <TextEditor
