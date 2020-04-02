@@ -23,6 +23,7 @@ This is built as a technical demonstration for a bare-bones React+Firebase PWA.
   - Dark theme support
 - Uses Firestore realtime database to sync changes instantaneously
 - Pin Notes
+- Search Notes
 
 ### Appearance
 
@@ -51,8 +52,8 @@ Does not use Flux style pattern but does use Context for simplicity's sake. This
 - Note sharing (Would be via email and only work if the use is already signed up for simplicity's sake).
   - Just need to extend the security rules, could store a map of uid->email for shares.
   - Share would allow collaboration, or viewing only?
-- Text search (would be good as it would require using an external service).
-  - Show history of previous searches (will also require a clear history option).
+- External text search (would be good as it would require using an external service such as Algolia).
+- Show history of previous text searches (will also require a clear history option).
 - Delete new empty notes (ie click new then immediately close the note).
 - Delete notes which are edited to have no contents.
 - Passive notifications (e.g. when a new note is deleted).
@@ -69,12 +70,15 @@ Does not use Flux style pattern but does use Context for simplicity's sake. This
 - Opening the app while offline results in a blank screen for a considerable amount of time.
 - App doesnt navigate to new notes while offline (promise not resolved).
 
-### Code Quality
+### Code Quality, CI, etc.
 
 - Improve firebase encapsulation.
 - Not happy with contexts.
 - Write more tests!
 - Tighten linting rules.
+- Mutation testing; i.e. Stryker
+- Deploy tags?
+- Build icon font (instead of using icomoon)
 
 ## Available Scripts
 
