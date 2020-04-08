@@ -1,18 +1,19 @@
 .Empty {
+    align-items: center;
+    background: var(--color-border);
+    color: var(--color-primary);
+    display: flex;
     flex: 1;
     flex-direction: column;
-    align-items: center;
-    display: flex;
-    justify-content: center;
     font-size: var(--font-large);
-    text-align: center;
+    justify-content: center;
     padding: 0 var(--space-medium);
-    color: var(--color-primary);
+    text-align: center;
 }
 
-.Empty img {
-    max-width: 80%;
+.Empty__Image {
     margin-bottom: var(--space-medium);
+    max-width: 80%;
 }
 
 @media only screen and (min-width: 1280px) {

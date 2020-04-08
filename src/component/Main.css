@@ -1,4 +1,5 @@
 .Main__Notes {
+    background: var(--color-border);
     position: relative;
     display: flex;
     flex-direction: column;
