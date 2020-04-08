@@ -63,6 +63,10 @@ Does not use Flux style pattern but does use Context for simplicity's sake. This
 - Delete account (i.e. clear all user data) ability.
 - Multi-lingual (especially considering there is so little text to translate).
 - Should pinning and unpinning change the update time?
+- Rich editor (to allow perhaps caret style markdown editing, clickable links, etc.)
+- Ability to attach files/images. Note that this could become an issue due to asset size.
+- Encrypt note content so that only the creator can read it.
+- Don't limit app width, but on very wide displays limit width of note list and show placeholder content where editor appears.
 
 ### Bugs
 

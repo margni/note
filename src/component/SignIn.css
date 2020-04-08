@@ -14,6 +14,7 @@
 .SignIn__Button {
     background: var(--color-border);
     border: 0;
+    color: var(--color-primary);
     font-size: var(--font-normal);
     padding: var(--space-small);
 }
