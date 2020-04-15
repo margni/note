@@ -30,14 +30,22 @@
 }
 
 .NoteList__Button:focus,
-.NoteList__Button:hover,
-.NoteList__Button:active {
+.NoteList__Button:hover {
     background: var(--color-alt-background);
+    outline: none;
+}
+
+.NoteList__Button:active {
+    background: var(--color-border);
     outline: none;
 }
 
 .NoteList__Item:last-child .NoteList__Button {
     border-bottom: none;
+}
+
+.NoteList__Item--selected .NoteList__Button {
+    background: var(--color-alt-background);
 }
 
 .NoteList__Pin {

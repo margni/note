@@ -62,7 +62,7 @@ main {
     height: 100%;
     justify-content: center;
     margin: auto;
-    max-width: 192rem;
+    /*max-width: 192rem;*/
     position: relative;
 }
 

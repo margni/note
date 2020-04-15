@@ -37,7 +37,6 @@
 
 - FAB should slide off screen on scroll down and back on on scroll up.
 - Animate reorder on pin/unpin.
-- Don't limit app width, but on very wide displays limit width of note list and show placeholder content where editor appears.
 
 ## Bugs
 

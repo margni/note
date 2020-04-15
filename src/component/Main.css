@@ -2,8 +2,8 @@
     background: var(--color-border);
     position: relative;
     display: flex;
+    flex-basis: 100%;
     flex-direction: column;
-    flex: 1;
     min-width: 0; /* Fix for text overflow in flex child. */
 }
 
@@ -22,6 +22,10 @@
     flex: 1;
 }
 
+.Main__Placeholder {
+    display: none;
+}
+
 @keyframes slide-in {
     0% {
         transform: translateX(100%);
@@ -36,17 +40,16 @@
 
 @media only screen and (min-width: 1280px) {
     .Main__Notes {
-        flex: auto;
-        transition: width var(--animation-short);
-        width: 100%;
-    }
-
-    .Main__Notes--collapsed {
-        width: 35%;
+        flex-basis: 35%;
     }
 
     .Main__Note {
-        position: static;
         width: 65%;
+    }
+
+    .Main__Placeholder {
+        background: var(--color-border);
+        display: block;
+        flex-basis: 65%;
     }
 }

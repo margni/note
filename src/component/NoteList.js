@@ -5,9 +5,9 @@ import { IconButton } from './IconButton';
 
 import './NoteList.css';
 
-export const NoteList = ({notes, onSelect, onTogglePin}) => <ol className="NoteList">
+export const NoteList = ({notes, onSelect, onTogglePin, selectedNote}) => <ol className="NoteList">
     {notes.map((note) =>
-        <li className="NoteList__Item" key={note.id}>
+        <li className={'NoteList__Item' + (selectedNote === note ? ' NoteList__Item--selected' : '')} key={note.id}>
             <button className="NoteList__Button" onClick={() => onSelect(note)}>{firstLine(note.text)}</button>
             <div className="NoteList__Pin"><IconButton key={note.id+note.pin} name="pin" secondary={!note.pin} onClick={() => onTogglePin(note)} /></div>
         </li>

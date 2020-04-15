@@ -12,7 +12,7 @@ import './Main.css';
 
 export const Main = ({notes, onClose, onCreate, onDelete, onSearch, onSelect, onSignOut, onTogglePin, onUpdate, query, selectedNote}) => {
     return <>
-        <section className={'Main__Notes' + (selectedNote ? ' Main__Notes--collapsed' : '')}>
+        <section className="Main__Notes">
             <AppBar>
                 <div className="Main__NotePrimaryActions"><Search onChange={(query) => onSearch(query)} value={query} /></div>
                 {selectedNote ? '' : <IconButton name="sign-out" onClick={onSignOut} position="right" secondary />}
@@ -23,10 +23,12 @@ export const Main = ({notes, onClose, onCreate, onDelete, onSearch, onSelect, on
                     notes={notes}
                     onSelect={(note) => onSelect(note)}
                     onTogglePin={(note) => onTogglePin(note)}
+                    selectedNote={selectedNote}
                 />
                 : <Empty message={query ? 'No results.' : 'You haven\'t taken any notes yet.'} />
             }
         </section>
+        <div className="Main__Placeholder" />
         {selectedNote
             ? <section className="Main__Note">
                 <AppBar>
