@@ -1,9 +1,9 @@
-import React from 'react';
-import { render } from '@testing-library/react';
+import React from "react";
+import { render } from "@testing-library/react";
 
-import { Empty } from './Empty';
+import { Empty } from "./Empty";
 
-test('renders', () => {
+test("renders", () => {
   const { container } = render(<Empty message="TEST" />);
 
   expect(container.firstChild).toMatchInlineSnapshot(`
@@ -12,6 +12,7 @@ test('renders', () => {
     >
       <img
         alt=" "
+        class="Empty__Image"
         src="empty.svg"
       />
       TEST
