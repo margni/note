@@ -4,4 +4,5 @@
     bottom: var(--space-small);
     position: absolute;
     right: var(--space-small);
+    z-index: 1;
 }

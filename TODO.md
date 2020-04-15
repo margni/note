@@ -18,7 +18,11 @@
 - Delete account (i.e. clear all user data) ability.
 - Should pinning and unpinning change the update time?
 - Ability to attach files/images. Note that this could become an issue due to asset size.
+  - See storage, would need to either charge or severely restrict asset size.
+  - Attach links may also be an option, rather than store the file.
 - Encrypt note content so that only the creator can read it.
+- Tag notes for organisation.
+- Soft delete (i.e. move to trash and delete after 24 hours or similar).
 
 ### Enhanced UX
 
@@ -40,7 +44,6 @@
 
 ## Bugs
 
-- Slide-in animation is buggy between 1280px - 1920px wide due to limitation of flex layout of container.
 - On iOS new note's textarea is not focused (works as expected when editing existing).
 - Opening the app while offline results in a blank screen for a considerable amount of time.
 - App doesnt navigate to new notes while offline (promise not resolved).
