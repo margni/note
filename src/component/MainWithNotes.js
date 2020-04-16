@@ -13,15 +13,23 @@ export const MainWithNotes = ({onSignOut}) => {
     const [selectedNote, selectNote] = useState(null);
     const [query, setQuery] = useState('');
 
+    const close = (note) => {
+        if (note && !note.text.trim()) {
+            deleteNote(note);
+        }
+
+        selectNote();
+    };
+
     if (!notes) {
         return null;
     }
 
     return <Main
         notes={filter(query, notes)}
-        onClose={() => selectNote()}
-        onCreate={() => create().then((note) => selectNote(note.id))}
-        onDelete={(note) => deleteNote(note).then(() => selectNote())}
+        onClose={(note) => close(note)}
+        onCreate={() => selectNote(create())}
+        onDelete={(note) => deleteNote(note) && selectNote()}
         onSearch={(query) => setQuery(query)}
         onSelect={(note) => selectNote(note.id)}
         onSignOut={() => onSignOut()}

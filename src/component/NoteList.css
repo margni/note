@@ -8,6 +8,7 @@
 }
 
 .NoteList__Item {
+    height: var(--space-x-large); /* Fix for new note getting additional height in Chrome. */
     position: relative;
 }
 

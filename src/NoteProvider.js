@@ -7,9 +7,11 @@ export const NoteContext = createContext();
 
 const collection = Firebase.firestore().collection('note');
 
-const create = (user) => collection.add({owner: user.uid, pin: false, text: '', time: new Date()}).then((doc) => doc.get().then((snapshot) => {
-    return {...snapshot.data(), id: doc.id};
-}));
+const create = (user) => {
+    const ref = collection.doc();
+    ref.set({owner: user.uid, pin: false, text: '', time: new Date()});
+    return ref.id;
+};
 
 const update = (note) => collection.doc(note.id).set({pin: !!note.pin, text: note.text, time: new Date()}, {merge:true});
 

@@ -12,8 +12,6 @@
   - Share would allow collaboration, or viewing only?
 - External text search (would be good as it would require using an external service such as Algolia).
 - Show history of previous text searches (will also require a clear history option).
-- Delete new empty notes (ie click new then immediately close the note).
-- Delete notes which are edited to have no contents.
 - Might it be a good idea to disable running multiple instances (i.e. over multiple tabs)?
 - Delete account (i.e. clear all user data) ability.
 - Should pinning and unpinning change the update time?
@@ -23,6 +21,7 @@
 - Encrypt note content so that only the creator can read it.
 - Tag notes for organisation.
 - Soft delete (i.e. move to trash and delete after 24 hours or similar).
+- If the user creates a note, inputs some text and closes before the debounce executes the update the note will be deleted as it is still empty.
 
 ### Enhanced UX
 
@@ -46,7 +45,6 @@
 
 - On iOS new note's textarea is not focused (works as expected when editing existing).
 - Opening the app while offline results in a blank screen for a considerable amount of time.
-- App doesnt navigate to new notes while offline (promise not resolved).
 
 ## Code Quality, CI, etc.
 

@@ -32,7 +32,7 @@ export const Main = ({notes, onClose, onCreate, onDelete, onSearch, onSelect, on
         {selectedNote
             ? <section className="Main__Note">
                 <AppBar>
-                    <div className="Main__NotePrimaryActions"><IconButton name="back" onClick={() => onClose()} /></div>
+                    <div className="Main__NotePrimaryActions"><IconButton name="back" onClick={() => onClose(selectedNote)} /></div>
                     <IconButton name="delete" onClick={() => onDelete(selectedNote)} position="right" secondary />
                 </AppBar>
                 <TextEditor
