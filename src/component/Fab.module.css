@@ -1,6 +1,6 @@
-.Fab {
-    border-radius: 50%;
+.host {
     background: var(--color-background);
+    border-radius: 50%;
     bottom: var(--space-small);
     position: absolute;
     right: var(--space-small);

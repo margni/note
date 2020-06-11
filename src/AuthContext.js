@@ -6,7 +6,7 @@ import {Firebase} from './firebase';
 export const AuthContext = React.createContext(null);
 
 // TODO add multiple sign-in options
-const signIn = () => {
+const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
 
     Firebase.auth().signInWithRedirect(provider);
@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider
-            value={{signIn, signOut, user}}
+            value={{signInWithGoogle, signOut, user}}
         >
             {children}
         </AuthContext.Provider>

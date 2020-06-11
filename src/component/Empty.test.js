@@ -8,11 +8,11 @@ test("renders", () => {
 
   expect(container.firstChild).toMatchInlineSnapshot(`
     <div
-      class="Empty"
+      class="host"
     >
       <img
         alt=" "
-        class="Empty__Image"
+        class="image"
         src="empty.svg"
       />
       TEST

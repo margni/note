@@ -1,4 +1,4 @@
-.IconButton {
+.host {
     animation: fade-in .3s ease;
     background: transparent;
     border: 0;
@@ -12,26 +12,26 @@
     width: var(--font-x-large);
 }
 
-.IconButton--large {
-    padding: 1.2rem;
-}
-
-.IconButton--right {
-    float: right;
-}
-
-.IconButton--secondary {
-    color: var(--color-secondary);
-}
-
-.IconButton:focus,
-.IconButton:hover {
+.host:focus,
+.host:hover {
     color: var(--color-accent-secondary);
     outline: none;
 }
 
-.IconButton--secondary:focus,
-.IconButton--secondary:hover {
+.large {
+    padding: 1.2rem;
+}
+
+.right {
+    float: right;
+}
+
+.secondary {
+    color: var(--color-secondary);
+}
+
+.secondary:focus,
+.secondary:hover {
     color: var(--color-tertiary);
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
 
-import './Fab.css';
+import styles from './Fab.module.css';
 
-export const Fab = ({children}) => <div className="Fab">{children}</div>;
+export const Fab = ({children}) => <div className={styles.host}>{children}</div>;

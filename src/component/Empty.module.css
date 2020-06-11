@@ -1,4 +1,4 @@
-.Empty {
+.host {
     align-items: center;
     background: var(--color-border);
     color: var(--color-primary);
@@ -11,13 +11,13 @@
     text-align: center;
 }
 
-.Empty__Image {
+.image {
     margin-bottom: var(--space-medium);
     max-width: 80%;
 }
 
 @media only screen and (min-width: 1280px) {
-    .Empty {
+    .host {
         font-size: var(--font-x-large);
     }
 }

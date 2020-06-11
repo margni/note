@@ -32,3 +32,17 @@ Sharing comes with its pitfalls, especially if we wanted to encrypt notes.
 Easier to do search on the client. Also free (outbound functions require a paid plan).
 
 `firebase functions:config:set algolia.api_key="" algolia.app_id="" algolia.search_key=""`
+
+## Disable Multiple Tabs
+
+Could potentially just use the enablePersistence error condition?
+
+```js
+firebase.firestore().enablePersistence({synchronizeTabs: false})
+  .catch(function(err) {
+      if (err.code == 'failed-precondition') {
+          // Multiple tabs open, persistence can only be enabled
+          // in one tab at a a time.
+          }
+      });
+```

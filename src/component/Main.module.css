@@ -1,4 +1,4 @@
-.Main__Notes {
+.notes {
     background: var(--color-border);
     position: relative;
     display: flex;
@@ -7,7 +7,7 @@
     min-width: 0; /* Fix for text overflow in flex child. */
 }
 
-.Main__Note {
+.note {
     animation: slide-in var(--animation-short) ease;
     display: flex;
     flex-direction: column;
@@ -18,11 +18,11 @@
     right: 0;
 }
 
-.Main__NotePrimaryActions {
+.notePrimaryActions {
     flex: 1;
 }
 
-.Main__Placeholder {
+.placeholder {
     display: none;
 }
 
@@ -39,15 +39,15 @@
 }
 
 @media only screen and (min-width: 1280px) {
-    .Main__Notes {
+    .notes {
         flex-basis: 35%;
     }
 
-    .Main__Note {
+    .note {
         width: 65%;
     }
 
-    .Main__Placeholder {
+    .placeholder {
         background: var(--color-border);
         display: block;
         flex-basis: 65%;

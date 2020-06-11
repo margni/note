@@ -1,9 +1,10 @@
 import React from 'react';
 
-import './IconButton.css';
+import styles from './IconButton.module.css';
 
+// todo Not accessible
 export const IconButton = ({name, onClick, position, secondary, size}) =>
     <button
-        className={'IconButton icon-' + name + (size === 'large' ? ' IconButton--large' : '') + (position === 'right' ? ' IconButton--right' : '') + (secondary ? ' IconButton--secondary' : '')}
+        className={`${styles.host} icon-${name} ${size === 'large' && styles.large} ${position === 'right' && styles.right} ${secondary && styles.secondary}`}
         onClick={onClick}
     />;

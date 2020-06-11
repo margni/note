@@ -8,16 +8,16 @@ import { NoteList } from './NoteList';
 import { Search } from './Search';
 import { TextEditor } from './TextEditor';
 
-import './Main.css';
+import styles from './Main.module.css';
 
-export const Main = ({notes, onClose, onCreate, onDelete, onSearch, onSelect, onSignOut, onTogglePin, onUpdate, query, selectedNote}) => {
-    return <>
-        <section className="Main__Notes">
+export const Main = ({notes, onClose, onCreate, onDelete, onSearch, onSelect, onSignOut, onTogglePin, onUpdate, query, selectedNote}) =>
+    <>
+        <section className={styles.notes}>
             <AppBar>
-                <div className="Main__NotePrimaryActions"><Search onChange={(query) => onSearch(query)} value={query} /></div>
-                {selectedNote ? '' : <IconButton name="sign-out" onClick={onSignOut} position="right" secondary />}
+                <div className={styles.notePrimaryActions}><Search onChange={(query) => onSearch(query)} value={query} /></div>
+                {!selectedNote && <IconButton name="sign-out" onClick={onSignOut} position="right" secondary />}
             </AppBar>
-            {selectedNote ? '' : <Fab><IconButton name="new" onClick={() => onCreate()} size="large" /></Fab>}
+            {!selectedNote && <Fab><IconButton name="new" onClick={() => onCreate()} size="large" /></Fab>}
             {notes && notes.length
                 ? <NoteList
                     notes={notes}
@@ -28,11 +28,11 @@ export const Main = ({notes, onClose, onCreate, onDelete, onSearch, onSelect, on
                 : <Empty message={query ? 'No results.' : 'You haven\'t taken any notes yet.'} />
             }
         </section>
-        <div className="Main__Placeholder" />
-        {selectedNote
-            ? <section className="Main__Note">
+        <div className={styles.placeholder} />
+        {selectedNote &&
+            <section className={styles.note}>
                 <AppBar>
-                    <div className="Main__NotePrimaryActions"><IconButton name="back" onClick={() => onClose(selectedNote)} /></div>
+                    <div className={styles.notePrimaryActions}><IconButton name="back" onClick={() => onClose(selectedNote)} /></div>
                     <IconButton name="delete" onClick={() => onDelete(selectedNote)} position="right" secondary />
                 </AppBar>
                 <TextEditor
@@ -42,7 +42,5 @@ export const Main = ({notes, onClose, onCreate, onDelete, onSearch, onSelect, on
                     value={selectedNote.text}
                 />
             </section>
-            : ''
         }
     </>;
-};

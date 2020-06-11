@@ -1,4 +1,4 @@
-.AppBar {
+.host {
     background: var(--color-border);
     display: flex;
     height: var(--space-x-large);

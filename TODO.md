@@ -25,6 +25,9 @@
 
 ### Enhanced UX
 
+- Enhance keyboard navigation and add shortcuts.
+- Drawer menu.
+- Scroll shadows.
 - Service worker should produce dialogue when reload available.
 - Delete confirmation dialogue.
 - Long press on list.
@@ -35,6 +38,7 @@
 - Multi-lingual (especially considering there is so little text to translate).
 - Rich editor (to allow perhaps caret style markdown editing, clickable links, etc.)
 - Ability to explicitly toggle dark mode. (Perhaps add an options menu first.)
+- Accessibility.
 
 ### Visual
 
@@ -43,15 +47,24 @@
 
 ## Bugs
 
-- On iOS new note's textarea is not focused (works as expected when editing existing).
+### High
+
+- Open notes do not seem to receive remote updates.
+
+### Medium
+
 - Opening the app while offline results in a blank screen for a considerable amount of time.
+
+### Low 
+
+- On iOS new note's textarea is not focused (works as expected when editing existing).
 
 ## Code Quality, CI, etc.
 
 - Improve firebase encapsulation.
-- Not happy with contexts.
-- Write more tests!
+- Improve context usage.
+- More tests.
 - Tighten linting rules.
-- Mutation testing; i.e. Stryker
+- Mutation testing; Stryker
 - Deploy tags?
 - Build icon font (instead of using icomoon)

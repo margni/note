@@ -3,13 +3,25 @@ import React from 'react';
 import { firstLine } from '../helper/firstLine';
 import { IconButton } from './IconButton';
 
-import './NoteList.css';
+import styles from './NoteList.module.css';
 
-export const NoteList = ({notes, onSelect, onTogglePin, selectedNote}) => <ol className="NoteList">
-    {notes.map((note) =>
-        <li className={'NoteList__Item' + (selectedNote === note ? ' NoteList__Item--selected' : '')} key={note.id}>
-            <button className="NoteList__Button" onClick={() => onSelect(note)}>{firstLine(note.text)}</button>
-            <div className="NoteList__Pin"><IconButton key={note.id+note.pin} name="pin" secondary={!note.pin} onClick={() => onTogglePin(note)} /></div>
-        </li>
-    )}
-</ol>;
+const NoteListItem = ({note, onSelect, onTogglePin, selected}) =>
+    <li className={`${styles.item} ${selected && `${styles.selected}`}`} key={note.id}>
+        <button className={styles.button} onClick={onSelect}>{firstLine(note.text)}</button>
+        <div className={styles.pin}>
+            <IconButton key={note.id+note.pin} name="pin" onClick={onTogglePin} secondary={!note.pin} />
+        </div>
+    </li>;
+
+export const NoteList = ({notes, onSelect, onTogglePin, selectedNote}) =>
+    <ol className={styles.host}>
+        {notes.map((note, i) =>
+            <NoteListItem
+                key={i}
+                note={note}
+                onSelect={() => onSelect(note)}
+                onTogglePin={() => onTogglePin(note)}
+                selected={selectedNote === note}
+            />
+        )}
+    </ol>;

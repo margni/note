@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './TextEditor.css';
+import styles from './TextEditor.module.css';
 
 export class TextEditor extends React.Component {
     textarea;
@@ -42,7 +42,7 @@ export class TextEditor extends React.Component {
 
     render() {
         return <textarea
-            className="TextEditor"
+            className={styles.host}
             onChange={this.handleChange}
             ref={(ref) => this.textarea = ref}
             value={this.state.value}

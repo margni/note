@@ -1,4 +1,4 @@
-.NoteList {
+.host {
     flex: 1;
     list-style: none;
     margin: 0;
@@ -7,12 +7,12 @@
     padding: 0;
 }
 
-.NoteList__Item {
+.item {
     height: var(--space-x-large); /* Fix for new note getting additional height in Chrome. */
     position: relative;
 }
 
-.NoteList__Button {
+.button {
     background: var(--color-background);
     border: 0;
     border-bottom: 1px solid var(--color-border);
@@ -30,26 +30,26 @@
     width: 100%;
 }
 
-.NoteList__Button:focus,
-.NoteList__Button:hover {
+.button:focus,
+.button:hover {
     background: var(--color-alt-background);
     outline: none;
 }
 
-.NoteList__Button:active {
+.button:active {
     background: var(--color-border);
     outline: none;
 }
 
-.NoteList__Item:last-child .NoteList__Button {
+.item:last-child .button {
     border-bottom: none;
 }
 
-.NoteList__Item--selected .NoteList__Button {
+.selected .button {
     background: var(--color-alt-background);
 }
 
-.NoteList__Pin {
+.pin {
     left: var(--space-x-small);
     position: absolute;
     top: 50%;

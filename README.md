@@ -10,7 +10,7 @@ mNote is an extremely minimal note taking web app.
 
 ## About
 
-This is built as a technical demonstration for a bare-bones React+Firebase PWA.
+This is built as a technical demonstration for a relatively simple React+Firebase PWA.
 
 ***Please note this is still a work in progress.***
 
@@ -29,7 +29,7 @@ This is built as a technical demonstration for a bare-bones React+Firebase PWA.
 
 Designed to be extremely minimal. Design and layout component architecture inspired by Material Design.
 
-CSS uses native variables rather than SASS and also uses BEM class naming conventions.
+CSS uses native variables rather than SASS and is also constructed using css modules for componentized CSS rather than something like BEM.
 
 ### Technical
 
