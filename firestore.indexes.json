@@ -9,11 +9,11 @@
           "order": "ASCENDING"
         },
         {
-          "fieldPath": "time",
+          "fieldPath": "pin",
           "order": "DESCENDING"
         },
         {
-          "fieldPath": "pin",
+          "fieldPath": "time",
           "order": "DESCENDING"
         }
       ]

@@ -24,8 +24,9 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
+      ">.5% in US",
       "not dead",
+      "not IE 11",
       "not op_mini all"
     ],
     "development": [

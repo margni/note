@@ -9,6 +9,7 @@
 
 .note {
     animation: slide-in var(--animation-short) ease;
+    border-left: 1px solid var(--color-border);
     display: flex;
     flex-direction: column;
     position: fixed;
