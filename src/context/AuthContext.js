@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import firebase from 'firebase/app';
 
-import {Firebase} from './firebase';
+import {Firebase} from '../firebase';
 
 export const AuthContext = React.createContext(null);
 
@@ -16,15 +16,10 @@ const signOut = () => {
     Firebase.auth().signOut();
 };
 
-// make an auth class object?
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
-    useEffect(() => {
-        const unsubscribe = Firebase.auth().onAuthStateChanged(setUser);
-
-        return () => unsubscribe();
-    }, []);
+    useEffect(() => Firebase.auth().onAuthStateChanged(setUser), []);
 
     return (
         <AuthContext.Provider

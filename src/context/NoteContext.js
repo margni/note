@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 
-import { Firebase } from './firebase';
+import { Firebase } from '../firebase';
 import { AuthContext } from './AuthContext';
 
 export const NoteContext = createContext();
@@ -24,8 +24,8 @@ const togglePin = (note) => update({...note, pin: !note.pin});
 
 const deleteNote = (note) => collection.doc(note.id).delete();
 
-// Do we want a Flux type arrangement here?
-// What about pagination (infinite scroll style)? If a user has a lot of notes you don't really want to load them all.
+// todo Maybe useReducer?
+// todo What about pagination (infinite scroll style)? If a user has a lot of notes you don't really want to load them all.
 export const NoteProvider = ({children}) => {
     const {user} = useContext(AuthContext);
     const [notes, setNotes] = useState();
@@ -33,15 +33,13 @@ export const NoteProvider = ({children}) => {
     useEffect(() => {
         if (!user) return;
 
-        const unsubscribe = collection
+        return collection
             .where('owner', '==', user.uid)
             .orderBy('pin', 'desc')
             .orderBy('time', 'desc')
             .onSnapshot((snapshot) =>
                 setNotes(snapshot.docs.map((doc) => ({...doc.data({serverTimestamps: 'estimate'}), id: doc.id})))
             );
-
-        return () => unsubscribe();
     }, [user]);
 
     return <NoteContext.Provider value={{create: () => create(user), update, deleteNote, togglePin, notes}}>

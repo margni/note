@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { Main } from './Main';
-import { useNotes } from '../NoteContext';
+import { useNotes } from '../context/NoteContext';
 
 const filter = (query, notes) => query.trim()
     ? notes.filter((note) => note.text.toUpperCase().indexOf(query.trim().toUpperCase()) > -1)

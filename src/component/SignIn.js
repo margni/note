@@ -1,6 +1,6 @@
 import React from 'react';
 
-import logo from '../logo.svg';
+import logo from '../image/logo.svg';
 import styles from './SignIn.module.css';
 
 // todo login - provide more login options

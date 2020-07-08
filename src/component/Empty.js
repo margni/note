@@ -1,6 +1,6 @@
 import React from 'react';
 
-import empty from '../empty.svg';
+import empty from '../image/empty.svg';
 import styles from './Empty.module.css';
 
 export const Empty = ({message}) => <div className={styles.host}>
