@@ -1,8 +1,8 @@
 # mNote
 
-![Margni](https://circleci.com/gh/margni/note.svg?style=svg)
+[![Latest Build](https://travis-ci.org/margni/note.svg?branch=master)](https://travis-ci.org/github/margni/note)
 
-[note.margni.com](https://note.margni.com)
+[![note.margni.com](public/logo192.png)](https://note.margni.com)
 
 mNote is an extremely minimal note taking web app.
 
