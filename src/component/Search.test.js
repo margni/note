@@ -9,7 +9,9 @@ test('updates on change without value', () => {
 
     expect(change).not.toHaveBeenCalled();
 
-    fireEvent.change(container.getElementsByTagName('input')[0], {target: {value: 'FOO'}});
+    fireEvent.change(container.getElementsByTagName('input')[0], {
+        target: { value: 'FOO' },
+    });
 
     expect(change).toHaveBeenCalledWith('FOO');
 });

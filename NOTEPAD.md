@@ -2,18 +2,18 @@
 
 ## Listen For `beforeinstallprompt`
 
-*Not currently available on iOS*
+_Not currently available on iOS_
 
 Possibly display an install banner at the bottom or an install button in the AppBar?
 
 ```javascript
 window.addEventListener('beforeinstallprompt', (e) => {
-  // Don't show mini-infobar
-  e.preventDefault();
-  // Stash the event so it can be triggered later.
-  deferredPrompt = e;
-  // Update UI to promote PWA installation
-  pwaInstallAvailable(true);
+    // Don't show mini-infobar
+    e.preventDefault();
+    // Stash the event so it can be triggered later.
+    deferredPrompt = e;
+    // Update UI to promote PWA installation
+    pwaInstallAvailable(true);
 });
 ```
 
@@ -38,11 +38,13 @@ Easier to do search on the client. Also free (outbound functions require a paid 
 Could potentially just use the enablePersistence error condition?
 
 ```js
-firebase.firestore().enablePersistence({synchronizeTabs: false})
-  .catch(function(err) {
-      if (err.code == 'failed-precondition') {
-          // Multiple tabs open, persistence can only be enabled
-          // in one tab at a a time.
-          }
-      });
+firebase
+    .firestore()
+    .enablePersistence({ synchronizeTabs: false })
+    .catch(function (err) {
+        if (err.code == 'failed-precondition') {
+            // Multiple tabs open, persistence can only be enabled
+            // in one tab at a a time.
+        }
+    });
 ```

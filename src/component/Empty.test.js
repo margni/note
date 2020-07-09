@@ -1,12 +1,12 @@
-import React from "react";
-import { render } from "@testing-library/react";
+import React from 'react';
+import { render } from '@testing-library/react';
 
-import { Empty } from "./Empty";
+import { Empty } from './Empty';
 
-test("renders", () => {
-  const { container } = render(<Empty message="TEST" />);
+test('renders', () => {
+    const { container } = render(<Empty message="TEST" />);
 
-  expect(container.firstChild).toMatchInlineSnapshot(`
+    expect(container.firstChild).toMatchInlineSnapshot(`
     <div
       class="host"
     >

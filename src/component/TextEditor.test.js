@@ -16,8 +16,8 @@ test('runs change deferred', () => {
     const change = jest.fn();
     const { container } = render(<TextEditor value="TEST" onChange={change} />);
 
-    fireEvent.change(container.firstChild, {target: {value: 'BAR'}});
-    fireEvent.change(container.firstChild, {target: {value: 'FOO'}});
+    fireEvent.change(container.firstChild, { target: { value: 'BAR' } });
+    fireEvent.change(container.firstChild, { target: { value: 'FOO' } });
 
     expect(change).not.toHaveBeenCalled();
 
@@ -29,9 +29,11 @@ test('runs change deferred', () => {
 
 test('runs change immediately when destroyed', () => {
     const change = jest.fn();
-    const { container, rerender } = render(<TextEditor value="TEST" onChange={change} />);
+    const { container, rerender } = render(
+        <TextEditor value="TEST" onChange={change} />
+    );
 
-    fireEvent.change(container.firstChild, {target: {value: 'FOO'}});
+    fireEvent.change(container.firstChild, { target: { value: 'FOO' } });
 
     expect(change).not.toHaveBeenCalled();
 

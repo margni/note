@@ -6,24 +6,24 @@
 
 mNote is an extremely minimal note taking web app.
 
-*© Margni Ltd. 2020*
+_© Margni Ltd. 2020_
 
 ## About
 
 This is built as a technical demonstration for a relatively simple React+Firebase PWA.
 
-***Please note this is still a work in progress.***
+**_Please note this is still a work in progress._**
 
 ### Features
 
-- PWA
-  - Installable/service worker
-  - Works Offline
-  - Fast, minimal, native/app-like interface
-  - Dark theme support
-- Uses Firestore realtime database to sync changes instantaneously
-- Pin Notes
-- Search Notes
+-   PWA
+    -   Installable/service worker
+    -   Works Offline
+    -   Fast, minimal, native/app-like interface
+    -   Dark theme support
+-   Uses Firestore realtime database to sync changes instantaneously
+-   Pin Notes
+-   Search Notes
 
 ### Appearance
 

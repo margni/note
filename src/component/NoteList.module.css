@@ -8,7 +8,9 @@
 }
 
 .item {
-    height: var(--space-x-large); /* Fix for new note getting additional height in Chrome. */
+    height: var(
+        --space-x-large
+    ); /* Fix for new note getting additional height in Chrome. */
     position: relative;
 }
 
@@ -22,7 +24,8 @@
     height: var(--space-x-large);
     line-height: var(--space-x-large);
     overflow: hidden;
-    padding: 0 var(--space-medium) 0 calc(var(--space-x-large) + var(--space-small));
+    padding: 0 var(--space-medium) 0
+        calc(var(--space-x-large) + var(--space-small));
     text-align: left;
     text-overflow: ellipsis;
     transition: background-color var(--animation-long);

@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 
-import {Firebase} from '../firebase';
+import { Firebase } from '../firebase';
 
 export const AuthContext = React.createContext(null);
 
@@ -22,9 +22,7 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => Firebase.auth().onAuthStateChanged(setUser), []);
 
     return (
-        <AuthContext.Provider
-            value={{signInWithGoogle, signOut, user}}
-        >
+        <AuthContext.Provider value={{ signInWithGoogle, signOut, user }}>
             {children}
         </AuthContext.Provider>
     );

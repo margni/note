@@ -1,25 +1,21 @@
 {
-  "firestore": {
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
-  },
-  "hosting": {
-    "public": "build",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "headers": [
-      {
-        "source": "static/**/*",
+    "firestore": {
+        "rules": "firestore.rules",
+        "indexes": "firestore.indexes.json"
+    },
+    "hosting": {
+        "public": "build",
+        "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
         "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "max-age=31536000"
-          }
+            {
+                "source": "static/**/*",
+                "headers": [
+                    {
+                        "key": "Cache-Control",
+                        "value": "max-age=31536000"
+                    }
+                ]
+            }
         ]
-      }
-    ]
-  }
+    }
 }

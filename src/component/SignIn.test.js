@@ -12,7 +12,7 @@ test('renders', () => {
 
 test('click', () => {
     const fn = jest.fn();
-    const { getByText } = render(<SignIn onClick={fn}/>);
+    const { getByText } = render(<SignIn onClick={fn} />);
     const linkElement = getByText(/Sign in with Google/i);
 
     fireEvent.click(linkElement);

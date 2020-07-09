@@ -11,8 +11,11 @@ export class TextEditor extends React.Component {
         }
 
         this.setState({
-            timeout: setTimeout(() => this.props.onChange(this.state.value), this.props.debounce || 1000),
-            value: event.target.value
+            timeout: setTimeout(
+                () => this.props.onChange(this.state.value),
+                this.props.debounce || 1000
+            ),
+            value: event.target.value,
         });
     };
 
@@ -21,7 +24,7 @@ export class TextEditor extends React.Component {
 
         this.state = {
             timeout: null,
-            value: props.value
+            value: props.value,
         };
     }
 
@@ -41,11 +44,13 @@ export class TextEditor extends React.Component {
     }
 
     render() {
-        return <textarea
-            className={styles.host}
-            onChange={this.handleChange}
-            ref={(ref) => this.textarea = ref}
-            value={this.state.value}
-        />;
+        return (
+            <textarea
+                className={styles.host}
+                onChange={this.handleChange}
+                ref={(ref) => (this.textarea = ref)}
+                value={this.state.value}
+            />
+        );
     }
 }

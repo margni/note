@@ -1,5 +1,5 @@
 .host {
-    animation: fade-in .3s ease;
+    animation: fade-in 0.3s ease;
     background: transparent;
     border: 0;
     box-sizing: content-box;
