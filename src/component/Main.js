@@ -109,7 +109,7 @@ export const Main = ({
                         />
                     </AppBar>
                     <TextEditor
-                        debounce={2000}
+                        debounce={1500}
                         key={selectedNote.id}
                         onChange={(text) => onUpdate({ ...selectedNote, text })}
                         value={selectedNote.text}
