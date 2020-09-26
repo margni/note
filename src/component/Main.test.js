@@ -1,6 +1,10 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
+jest.mock('firebase/app', () => ({}));
+
+jest.mock('../firebase', () => ({}));
+
 import { AuthContext } from '../context/AuthContext';
 
 import { Main } from './Main';
