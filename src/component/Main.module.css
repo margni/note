@@ -24,7 +24,10 @@
 }
 
 .placeholder {
+    align-items: center;
     display: none;
+    font-size: var(--font-large);
+    justify-content: center;
 }
 
 .user {
@@ -59,7 +62,7 @@
 
     .placeholder {
         background: var(--color-border);
-        display: block;
+        display: flex;
         flex-basis: 65%;
     }
 }

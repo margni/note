@@ -22,6 +22,7 @@ export const Main = ({
     onSignOut,
     onTogglePin,
     onUpdate,
+    placeholderMessage,
     query,
     selectedNote,
 }) => {
@@ -90,7 +91,7 @@ export const Main = ({
                     />
                 )}
             </section>
-            <div className={styles.placeholder} />
+            <div className={styles.placeholder}>{placeholderMessage}</div>
             {selectedNote && (
                 <section className={styles.note}>
                     <AppBar>

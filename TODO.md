@@ -11,8 +11,6 @@
     -   Link to margni
     -   Toggle dark mode
 -   Folders
--   Use history api or routing. Essentially just respond to the back button.
-    Just replace the last history item when switching between notes, and pop on in app browser button.
 
 ### New Functionality
 
