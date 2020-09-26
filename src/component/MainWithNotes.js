@@ -13,7 +13,7 @@ const filter = (query, notes) =>
         : notes;
 
 // Todo this is a temporary solution and should be refactored.
-export const MainWithNotes = ({ onSignOut }) => {
+export default ({ onSignOut }) => {
     const { create, update, deleteNote, togglePin, notes } = useNotes();
     const [selectedNote, selectNote] = useState(null);
     const [query, setQuery] = useState('');

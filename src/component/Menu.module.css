@@ -1,0 +1,35 @@
+.host {
+    animation: zoom-in var(--animation-short) ease;
+    background: var(--color-alt-background);
+    font-size: var(--font-normal);
+    max-width: 384px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+@media only screen and (min-width: 384px) {
+    .host {
+        right: var(--space-small);
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    .host {
+        right: calc(65% + var(--space-small));
+    }
+}
+
+@keyframes zoom-in {
+    0% {
+        opacity: 0;
+        transform: scale(0, 0) translate(100%, -100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1, 1) translate(0, 0);
+    }
+}

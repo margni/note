@@ -27,6 +27,15 @@
     display: none;
 }
 
+.user {
+    margin: var(--space-small);
+}
+
+.userName {
+    font-weight: 400;
+    margin: 0;
+}
+
 @keyframes slide-in {
     0% {
         transform: translateX(100%);

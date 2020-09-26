@@ -2,6 +2,18 @@
 
 ## Features
 
+### Picked For Development Next
+
+-   Install prompt
+-   Update prompt (and menu?)
+-   Global context / account menu.
+    -   Link to source
+    -   Link to margni
+    -   Toggle dark mode
+-   Folders
+-   Use history api or routing. Essentially just respond to the back button.
+    Just replace the last history item when switching between notes, and pop on in app browser button.
+
 ### New Functionality
 
 -   Use history api or routing. Essentially just respond to the back button.
@@ -22,6 +34,7 @@
 -   Tag notes for organisation.
 -   Soft delete (i.e. move to trash and delete after 24 hours or similar).
 -   If the user creates a note, inputs some text and closes before the debounce executes the update the note will be deleted as it is still empty.
+-   Folders
 
 ### Enhanced UX
 

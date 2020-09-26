@@ -1,9 +1,10 @@
 import React from 'react';
 
 import { AuthContext, AuthProvider } from '../context/AuthContext';
-import { MainWithNotes } from '../component/MainWithNotes';
 import { NoteProvider } from '../context/NoteContext';
 import { SignIn } from '../component/SignIn';
+
+const MainWithNotes = React.lazy(() => import('../component/MainWithNotes'));
 
 export const App = () => (
     <AuthProvider>
@@ -11,7 +12,9 @@ export const App = () => (
             <AuthContext.Consumer>
                 {({ signInWithGoogle, signOut, user }) =>
                     user ? (
-                        <MainWithNotes onSignOut={signOut} />
+                        <React.Suspense fallback={''}>
+                            <MainWithNotes onSignOut={signOut} />
+                        </React.Suspense>
                     ) : (
                         <SignIn onClick={() => signInWithGoogle()} />
                     )
