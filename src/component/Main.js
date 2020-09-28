@@ -4,10 +4,11 @@ import { AppBar } from './AppBar';
 import { Empty } from './Empty';
 import { Fab } from './Fab';
 import { IconButton } from './IconButton';
+import { InstallNotifier } from './InstallNotifier';
+import { Menu } from './Menu';
 import { NoteList } from './NoteList';
 import { Search } from './Search';
 import { TextEditor } from './TextEditor';
-import { Menu } from './Menu';
 import { useAuth } from '../context/AuthContext';
 
 import styles from './Main.module.css';
@@ -47,6 +48,7 @@ export const Main = ({
                     <h3 className={styles.userName}>{user.displayName}</h3>
                     {user.email}
                 </div>
+                <InstallNotifier />
             </Menu>
             <section className={styles.notes}>
                 <AppBar>
