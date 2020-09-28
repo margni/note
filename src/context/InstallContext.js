@@ -1,5 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 
+window.addEventListener(
+    'beforeinstallprompt',
+    (event) => console.log(event),
+    false
+);
+
 export const InstallContext = React.createContext(null);
 
 export const InstallProvider = ({ children }) => {
