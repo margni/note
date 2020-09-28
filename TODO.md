@@ -4,16 +4,21 @@
 
 ### Picked For Development Next
 
--   Install prompt
 -   Update prompt (and menu?)
 -   Global context / account menu.
     -   Link to source
     -   Link to margni
     -   Toggle dark mode
--   Folders
+    -   Toggle experimental features
+-   Folders/Tags
 
 ### New Functionality
 
+-   Add a router.
+    -   This could be useful for share target, app shortcuts, publicly shared notes, etc.
+-   Web Share https://web.dev/web-share/
+-   Web Share Target https://web.dev/web-share-target/
+-   App Shortcuts https://web.dev/app-shortcuts/
 -   Use history api or routing. Essentially just respond to the back button.
 -   Other login options?
 -   Catch and log firestore and auth errors.
@@ -36,20 +41,19 @@
 
 ### Enhanced UX
 
+-   Accessibility.
 -   Enhance keyboard navigation and add shortcuts.
 -   Drawer menu.
 -   Scroll shadows.
--   Service worker should produce dialogue when reload available.
+-   Service worker should produce notification when reload available.
 -   Delete confirmation dialogue.
 -   Long press on list.
 -   Offline Indicator.
--   Install prompt/enhanced process.
 -   Note colours/icons/etc.
 -   Passive notifications (e.g. when a new note is deleted).
 -   Multi-lingual (especially considering there is so little text to translate).
 -   Rich editor (to allow perhaps caret style markdown editing, clickable links, etc.)
 -   Ability to explicitly toggle dark mode. (Perhaps add an options menu first.)
--   Accessibility.
 
 ### Visual
 

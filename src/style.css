@@ -29,6 +29,9 @@
 .icon-context-menu:before {
     content: '\22ee';
 }
+.icon-share:before {
+    content: '\1f4e4';
+}
 .icon-menu:before {
     content: '\2261';
 }

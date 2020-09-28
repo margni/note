@@ -103,6 +103,18 @@ export const Main = ({
                                 onClick={() => onClose(selectedNote)}
                             />
                         </div>
+                        {navigator.share && (
+                            <IconButton
+                                name="share"
+                                onClick={() =>
+                                    navigator.share({
+                                        text: selectedNote.text,
+                                    })
+                                }
+                                position="right"
+                                secondary
+                            />
+                        )}
                         <IconButton
                             name="delete"
                             onClick={() => onDelete(selectedNote)}

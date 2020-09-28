@@ -6,25 +6,28 @@ export const InstallProvider = ({ children }) => {
     const [deferredPrompt, setDeferredPrompt] = useState();
 
     useEffect(() => {
-        const onBeforeInstallPrompt = (e) => {
+        const handleBeforeInstallPrompt = (e) => {
             e.preventDefault();
 
             setDeferredPrompt(e);
         };
 
-        const onAppInstalled = () => {
+        const handleAppInstalled = () => {
             setDeferredPrompt();
         };
 
-        window.addEventListener('beforeinstallprompt', onBeforeInstallPrompt);
-        window.addEventListener('appinstalled', onAppInstalled);
+        window.addEventListener(
+            'beforeinstallprompt',
+            handleBeforeInstallPrompt
+        );
+        window.addEventListener('appinstalled', handleAppInstalled);
 
         return () => {
             window.removeEventListener(
                 'beforeinstallprompt',
-                onBeforeInstallPrompt
+                handleBeforeInstallPrompt
             );
-            window.removeEventListener('appinstalled', onAppInstalled);
+            window.removeEventListener('appinstalled', handleAppInstalled);
         };
     }, []);
 

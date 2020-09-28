@@ -61,7 +61,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 ```
 
-## Conditional CSS
+### Conditional CSS
 
 ```css
 @media all and (display-mode: standalone) {
