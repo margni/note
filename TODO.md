@@ -14,15 +14,16 @@
 
 ### New Functionality
 
+-   MD support, ideally live edit.
+-   Analytics
 -   Add a router.
     -   This could be useful for share target, app shortcuts, publicly shared notes, etc.
--   Web Share https://web.dev/web-share/
+-   Enhance Web Share https://web.dev/web-share/
 -   Web Share Target https://web.dev/web-share-target/
 -   App Shortcuts https://web.dev/app-shortcuts/
--   Use history api or routing. Essentially just respond to the back button.
--   Other login options?
+-   Other login options, or at least email+password
 -   Catch and log firestore and auth errors.
--   Note sharing (Would be via email and only work if the use is already signed up for simplicity's sake).
+-   Note sharing (MVP could be via email and essentially only work if there is a user with that email, either now or in the future).
     -   Just need to extend the security rules, could store a map of uid->email for shares.
     -   Share would allow collaboration, or viewing only?
 -   External text search (would be good as it would require using an external service such as Algolia).
@@ -36,8 +37,10 @@
 -   Encrypt note content so that only the creator can read it.
 -   Tag notes for organisation.
 -   Soft delete (i.e. move to trash and delete after 24 hours or similar).
--   If the user creates a note, inputs some text and closes before the debounce executes the update the note will be deleted as it is still empty.
 -   Folders
+-   Make URLs clickable (without negatively impacting editing experience).
+-   Reminders
+-   Push notification for share, reminders, etc.
 
 ### Enhanced UX
 
@@ -59,6 +62,7 @@
 
 -   FAB should slide off screen on scroll down and back on on scroll up.
 -   Animate reorder on pin/unpin.
+-   Consider moving pinning off of main view.
 
 ## Bugs
 
