@@ -80,6 +80,7 @@
 
 ## Code Quality, CI, etc.
 
+-   Currently using CamelCase file names, not sure why.
 -   Improve firebase encapsulation.
 -   Improve context usage.
 -   More tests.

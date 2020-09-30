@@ -10,7 +10,6 @@ export const InstallNotifier = () => {
     const install = useCallback(() => {
         deferredPrompt.prompt();
 
-        // Wait for the user to respond to the prompt
         deferredPrompt.userChoice.then((choiceResult) => {
             if (choiceResult.outcome === 'accepted') {
                 console.log('User accepted the install prompt');
@@ -24,7 +23,5 @@ export const InstallNotifier = () => {
         <button className={styles.host} onClick={install}>
             Install
         </button>
-    ) : (
-        ''
-    );
+    ) : null;
 };

@@ -5,7 +5,7 @@ import { Empty } from './Empty';
 import { Fab } from './Fab';
 import { IconButton } from './IconButton';
 import { InstallNotifier } from './InstallNotifier';
-import { Menu } from './Menu';
+import { ContextMenu } from './ContextMenu';
 import { NoteList } from './NoteList';
 import { Search } from './Search';
 import { TextEditor } from './TextEditor';
@@ -32,7 +32,7 @@ export const Main = ({
 
     return (
         <>
-            <Menu open={menu}>
+            <ContextMenu open={menu}>
                 <IconButton
                     name="close"
                     position="right"
@@ -49,7 +49,7 @@ export const Main = ({
                     {user.email}
                 </div>
                 <InstallNotifier />
-            </Menu>
+            </ContextMenu>
             <section className={styles.notes}>
                 <AppBar>
                     <div className={styles.notePrimaryActions}>

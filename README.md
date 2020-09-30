@@ -17,10 +17,12 @@ This is built as a technical demonstration for a relatively simple React+Firebas
 ### Features
 
 -   PWA
-    -   Installable/service worker
+    -   Manifest, services worker, etc.
+    -   Installable with custom handler
     -   Works Offline
-    -   Fast, minimal, native/app-like interface
+    -   Performant, minimal, native/app-like interface
     -   Dark theme support
+    -   Share via Web Share API
 -   Uses Firestore realtime database to sync changes instantaneously
 -   Pin Notes
 -   Search Notes
@@ -33,7 +35,7 @@ CSS uses native variables rather than SASS and is also constructed using css mod
 
 ### Technical
 
-Does not use Flux style pattern but does use Context for simplicity's sake. This approach may not be appropriate in a real-world application.
+Generally trying to keep things as simple as possible. Intentionally not Flux based, this approach may not be suitable for a real-world application.
 
 ## ToDo
 

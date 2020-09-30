@@ -1,8 +1,8 @@
 import React from 'react';
 
-import styles from './Menu.module.css';
+import styles from './ContextMenu.module.css';
 
 // TODO close on click outside.
-export const Menu = ({ children, open }) => {
+export const ContextMenu = ({ children, open }) => {
     return open ? <nav className={styles.host}>{children}</nav> : null;
 };
