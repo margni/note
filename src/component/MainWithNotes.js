@@ -2,14 +2,13 @@ import React, { useCallback, useEffect, useState } from 'react';
 
 import { Main } from './Main';
 import { useNotes } from '../context/NoteContext';
+import { tokenize } from '../helper/tokenize';
 
-const filter = (query, notes) =>
-    query.trim()
-        ? notes.filter(
-              (note) =>
-                  note.text.toUpperCase().indexOf(query.trim().toUpperCase()) >
-                  -1
-          )
+// todo Tag Search
+// todo Ultimately client side search may become a problem, especially if someone has a significant number of notes.
+const filter = (query, notes, tokenizedQuery = tokenize(query)) =>
+    tokenizedQuery
+        ? notes.filter((note) => tokenizedQuery.test(note.text))
         : notes;
 
 // TODO this is a temporary solution and should be refactored urgently.

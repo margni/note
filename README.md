@@ -12,7 +12,7 @@ _© Margni Ltd. 2020_
 
 This is built as a technical demonstration for a relatively simple React+Firebase PWA.
 
-**_Please note this is still a work in progress._**
+**_At this time its intended purpose is exploring these ideas, not to demonstrate a production quality app._**
 
 ### Features
 
