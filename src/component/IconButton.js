@@ -1,15 +1,32 @@
 import React from 'react';
 
+import { classNames } from '../helper/classNames';
+
 import styles from './IconButton.module.css';
 
 // todo Not accessible
-export const IconButton = ({ name, onClick, position, secondary, size }) => (
+export const IconButton = ({
+    disabled = false,
+    name,
+    onClick = () => undefined,
+    position,
+    secondary,
+    size,
+    type = 'button',
+}) => (
     <button
-        className={`${styles.host} icon-${name} ${
-            size === 'large' && styles.large
-        } ${position === 'right' && styles.right} ${
-            secondary && styles.secondary
-        }`}
+        className={classNames(
+            {
+                host: true,
+                [`icon-${name}`]: true,
+                large: size === 'large',
+                right: position === 'right',
+                secondary: secondary,
+            },
+            styles
+        )}
+        disabled={disabled}
+        type={type}
         onClick={onClick}
     />
 );

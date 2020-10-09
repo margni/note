@@ -1,25 +1,36 @@
 .host {
+    position: relative;
+}
+
+.menu {
     animation: zoom-in var(--animation-short) ease;
     background: var(--color-alt-background);
     font-size: var(--font-normal);
-    max-width: 384px;
     position: fixed;
     right: 0;
     top: 0;
-    width: 100%;
+    width: 100vw;
     z-index: 1;
 }
 
+.close {
+    float: right;
+}
+
 @media only screen and (min-width: 384px) {
-    .host {
-        right: var(--space-small);
-        max-width: calc(384px - var(--space-small) - var(--space-small));
+    .menu {
+        max-width: 384px;
+        position: absolute;
+    }
+
+    .narrow .menu {
+        max-width: 256px;
     }
 }
 
 @media only screen and (min-width: 1280px) {
-    .host {
-        right: calc(65% + var(--space-small));
+    .menu {
+        /*right: calc(65% + var(--space-small));*/
     }
 }
 

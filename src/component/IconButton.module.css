@@ -4,18 +4,21 @@
     border: 0;
     box-sizing: content-box;
     color: var(--color-accent);
-    cursor: pointer;
     font-size: var(--font-large);
     height: var(--font-x-large);
     padding: var(--space-x-small);
-    transition: color var(--animation-standard);
+    transition: all var(--animation-standard);
     width: var(--font-x-large);
 }
 
-.host:focus,
-.host:hover {
+.host:not(:disabled):focus,
+.host:not(:disabled):hover {
     color: var(--color-accent-secondary);
     outline: none;
+}
+
+.host:disabled {
+    opacity: 0.5;
 }
 
 .large {

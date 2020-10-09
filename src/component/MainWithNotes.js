@@ -4,6 +4,7 @@ import { Main } from './Main';
 import { useNotes } from '../context/NoteContext';
 import { tokenize } from '../helper/tokenize';
 
+// TODO Delimit
 // todo Tag Search
 // todo Ultimately client side search may become a problem, especially if someone has a significant number of notes.
 const filter = (query, notes, tokenizedQuery = tokenize(query)) =>
@@ -13,7 +14,15 @@ const filter = (query, notes, tokenizedQuery = tokenize(query)) =>
 
 // TODO this is a temporary solution and should be refactored urgently.
 export default ({ onSignOut }) => {
-    const { create, update, deleteNote, togglePin, notes } = useNotes();
+    const {
+        create,
+        update,
+        deleteNote,
+        togglePin,
+        toggleTag,
+        notes,
+        tags,
+    } = useNotes();
     const [selectedNote, selectNote] = useState();
     const [query, setQuery] = useState('');
 
@@ -95,11 +104,13 @@ export default ({ onSignOut }) => {
             onSearch={(query) => setQuery(query)}
             onSelect={(note) => selectNoteWithHistory(note.id)}
             onSignOut={() => onSignOut()}
-            onTogglePin={(note) => togglePin(note)}
+            onTogglePin={togglePin}
+            onToggleTag={toggleTag}
             onUpdate={(note) => update(note)}
             placeholderMessage={placeholderMessage}
             query={query}
             selectedNote={selectedNoteActual}
+            tags={tags}
         />
     );
 };

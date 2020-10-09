@@ -8,9 +8,8 @@
 }
 
 .item {
-    height: var(
-        --space-x-large
-    ); /* Fix for new note getting additional height in Chrome. */
+    /* Fix for new note getting additional height in Chrome. */
+    height: var(--space-x-large);
     position: relative;
 }
 
@@ -20,22 +19,21 @@
     border-bottom: 1px solid var(--color-border);
     color: var(--color-primary);
     cursor: pointer;
+    display: flex;
     font-size: var(--font-normal);
     height: var(--space-x-large);
     line-height: var(--space-x-large);
-    overflow: hidden;
     padding: 0 var(--space-medium) 0
         calc(var(--space-x-large) + var(--space-small));
     text-align: left;
-    text-overflow: ellipsis;
-    transition: background-color var(--animation-long);
-    white-space: nowrap;
+    transition: all var(--animation-long);
     width: 100%;
 }
 
 .button:focus,
 .button:hover {
     background: var(--color-alt-background);
+    color: var(--color-alt-primary);
     outline: none;
 }
 
@@ -57,4 +55,19 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+}
+
+.title {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tags {
+    color: var(--color-secondary);
+    max-width: 33%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

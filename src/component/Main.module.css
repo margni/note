@@ -20,7 +20,12 @@
 }
 
 .notePrimaryActions {
+    display: flex;
     flex: 1;
+}
+
+.noteSecondaryActions {
+    display: flex;
 }
 
 .placeholder {

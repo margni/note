@@ -10,6 +10,7 @@
     --color-border: #eee;
     --color-alt-border: #ddd;
     --color-primary: #555;
+    --color-alt-primary: #444;
     --color-secondary: #999;
     --color-tertiary: #ccc;
     --color-accent-secondary: #9bf;
@@ -31,6 +32,7 @@
         --color-border: #292929;
         --color-alt-border: #191919;
         --color-primary: #aaa;
+        --color-alt-primary: #bbb;
         --color-secondary: #777;
         --color-tertiary: #ccc;
     }

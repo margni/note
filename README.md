@@ -26,6 +26,7 @@ This is built as a technical demonstration for a relatively simple React+Firebas
 -   Uses Firestore realtime database to sync changes instantaneously
 -   Pin Notes
 -   Search Notes
+-   Multilingual; uses iconography instead of words to make the application language agnostic for sighted users.
 
 ### Appearance
 

@@ -1,7 +1,9 @@
 import React from 'react';
 
 import { firstLine } from '../helper/firstLine';
+
 import { IconButton } from './IconButton';
+import { NoteTagList } from './NoteTagList';
 
 import styles from './NoteList.module.css';
 
@@ -11,7 +13,10 @@ const NoteListItem = ({ note, onSelect, onTogglePin, selected }) => (
         key={note.id}
     >
         <button className={styles.button} onClick={onSelect}>
-            {firstLine(note.text)}
+            <div className={styles.title}>{firstLine(note.text)}</div>
+            <div className={styles.tags}>
+                <NoteTagList note={note} />
+            </div>
         </button>
         <div className={styles.pin}>
             <IconButton

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { AppBar } from './AppBar';
 import { Empty } from './Empty';
@@ -7,11 +7,12 @@ import { IconButton } from './IconButton';
 import { InstallNotifier } from './InstallNotifier';
 import { ContextMenu } from './ContextMenu';
 import { NoteList } from './NoteList';
-import { Search } from './Search';
+import { IconInput } from './IconInput';
 import { TextEditor } from './TextEditor';
 import { useAuth } from '../context/AuthContext';
 
 import styles from './Main.module.css';
+import { ManageNoteTags } from './ManageNoteTags';
 
 export const Main = ({
     notes,
@@ -22,49 +23,57 @@ export const Main = ({
     onSelect,
     onSignOut,
     onTogglePin,
+    onToggleTag,
     onUpdate,
     placeholderMessage,
     query,
     selectedNote,
+    tags,
 }) => {
-    const [menu, setMenu] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [tagMenuOpen, setTagMenuOpen] = useState(false);
+    const [last, setLast] = useState();
     const { user } = useAuth();
+
+    useEffect(() => {
+        if (selectedNote) {
+            if (last && selectedNote.id !== last) {
+                setTagMenuOpen(false);
+            } else {
+                setLast(selectedNote.id);
+            }
+        } else {
+            setTagMenuOpen(false);
+        }
+    }, [last, selectedNote]);
 
     return (
         <>
-            <ContextMenu open={menu}>
-                <IconButton
-                    name="close"
-                    position="right"
-                    onClick={() => setMenu(false)}
-                />
-                <IconButton
-                    name="sign-out"
-                    onClick={onSignOut}
-                    position="right"
-                    secondary
-                />
-                <div className={styles.user}>
-                    <h3 className={styles.userName}>{user.displayName}</h3>
-                    {user.email}
-                </div>
-                <InstallNotifier />
-            </ContextMenu>
             <section className={styles.notes}>
                 <AppBar>
                     <div className={styles.notePrimaryActions}>
-                        <Search
+                        <IconInput
+                            onSecondaryAction={() => onSearch('')}
                             onChange={(query) => onSearch(query)}
                             value={query}
                         />
                     </div>
                     {!selectedNote && (
-                        <IconButton
-                            name="context-menu"
-                            onClick={() => setMenu(true)}
-                            position="right"
-                            secondary
-                        />
+                        <ContextMenu open={menuOpen} onToggle={setMenuOpen}>
+                            <IconButton
+                                name="sign-out"
+                                onClick={onSignOut}
+                                position="right"
+                                secondary
+                            />
+                            <div className={styles.user}>
+                                <h3 className={styles.userName}>
+                                    {user.displayName}
+                                </h3>
+                                {user.email}
+                            </div>
+                            <InstallNotifier />
+                        </ContextMenu>
                     )}
                 </AppBar>
                 {!selectedNote && (
@@ -79,7 +88,7 @@ export const Main = ({
                 {notes && notes.length ? (
                     <NoteList
                         notes={notes}
-                        onSelect={(note) => setMenu(false) & onSelect(note)}
+                        onSelect={(note) => setMenuOpen(false) & onSelect(note)}
                         onTogglePin={(note) => onTogglePin(note)}
                         selectedNote={selectedNote}
                     />
@@ -103,24 +112,31 @@ export const Main = ({
                                 onClick={() => onClose(selectedNote)}
                             />
                         </div>
-                        {navigator.share && (
+                        <div className={styles.noteSecondaryActions}>
+                            <ManageNoteTags
+                                tags={tags}
+                                note={selectedNote}
+                                menuOpen={tagMenuOpen}
+                                onToggleMenu={setTagMenuOpen}
+                                onToggleTag={onToggleTag}
+                            />
+                            {navigator.share && (
+                                <IconButton
+                                    name="share"
+                                    onClick={() =>
+                                        navigator.share({
+                                            text: selectedNote.text,
+                                        })
+                                    }
+                                    secondary
+                                />
+                            )}
                             <IconButton
-                                name="share"
-                                onClick={() =>
-                                    navigator.share({
-                                        text: selectedNote.text,
-                                    })
-                                }
-                                position="right"
+                                name="delete"
+                                onClick={() => onDelete(selectedNote)}
                                 secondary
                             />
-                        )}
-                        <IconButton
-                            name="delete"
-                            onClick={() => onDelete(selectedNote)}
-                            position="right"
-                            secondary
-                        />
+                        </div>
                     </AppBar>
                     <TextEditor
                         debounce={1500}

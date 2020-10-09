@@ -1,11 +1,11 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
-import { Search } from './Search';
+import { IconInput } from './IconInput';
 
 test('updates on change without value', () => {
     const change = jest.fn();
-    const { container } = render(<Search onChange={change} value="" />);
+    const { container } = render(<IconInput onChange={change} value="" />);
 
     expect(change).not.toHaveBeenCalled();
 

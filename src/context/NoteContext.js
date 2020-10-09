@@ -13,6 +13,7 @@ const create = (user) => {
     ref.set({
         owner: user.uid,
         pin: false,
+        tags: [],
         text: '',
         time: firebase.firestore.FieldValue.serverTimestamp(),
     });
@@ -23,6 +24,7 @@ const update = (note) =>
     collection.doc(note.id).set(
         {
             pin: !!note.pin,
+            tags: note.tags || [],
             text: note.text,
             time: firebase.firestore.FieldValue.serverTimestamp(),
         },
@@ -31,13 +33,21 @@ const update = (note) =>
 
 const togglePin = (note) => update({ ...note, pin: !note.pin });
 
+const toggleTag = (note, tag) =>
+    update({
+        ...note,
+        tags:
+            note.tags && note.tags.includes(tag)
+                ? note.tags.filter((iTag) => iTag !== tag)
+                : [...note.tags, tag].sort(),
+    });
+
 const deleteNote = (note) => collection.doc(note.id).delete();
 
-// todo Maybe useReducer?
-// todo What about pagination (infinite scroll style)? If a user has a lot of notes you don't really want to load them all.
 export const NoteProvider = ({ children }) => {
     const { user } = useContext(AuthContext);
     const [notes, setNotes] = useState();
+    const [tags, setTags] = useState([]);
 
     useEffect(() => {
         if (!user) return;
@@ -49,12 +59,32 @@ export const NoteProvider = ({ children }) => {
             .onSnapshot((snapshot) =>
                 setNotes(
                     snapshot.docs.map((doc) => ({
+                        tags: [],
                         ...doc.data({ serverTimestamps: 'estimate' }),
                         id: doc.id,
                     }))
                 )
             );
     }, [user]);
+
+    useEffect(() => {
+        // TODO A counter for how many times each tag is used might be nice.
+        if (!notes) {
+            return;
+        }
+
+        let workingTags = [];
+
+        notes.forEach((note) => {
+            workingTags = [...workingTags, ...(note.tags || [])];
+        });
+
+        setTags(
+            workingTags
+                .filter((tag, index) => workingTags.indexOf(tag) === index)
+                .sort()
+        );
+    }, [notes]);
 
     return (
         <NoteContext.Provider
@@ -63,7 +93,9 @@ export const NoteProvider = ({ children }) => {
                 update,
                 deleteNote,
                 togglePin,
+                toggleTag,
                 notes,
+                tags,
             }}
         >
             {children}

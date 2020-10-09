@@ -2,6 +2,8 @@ import React from 'react';
 
 import styles from './TextEditor.module.css';
 
+// While this could be written as a function component using hooks it seems
+// easier to write it as a class component.
 export class TextEditor extends React.Component {
     textarea;
 
@@ -43,6 +45,7 @@ export class TextEditor extends React.Component {
             // the presence of the timeout indicates that there are pending
             // changes, commit them immediately.
             clearTimeout(this.state.timeout);
+            this.setState({ timeout: undefined });
             this.props.onChange(this.state.value);
         }
     };

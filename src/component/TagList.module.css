@@ -1,0 +1,39 @@
+.host {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.item {
+    display: block;
+    padding: var(--space-x-small) var(--space-small);
+}
+
+.item > input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.item > input + span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    color: var(--color-secondary);
+    transition: color var(--animation-standard);
+}
+
+.item:hover > input + span {
+    color: var(--color-primary);
+}
+
+.item > input:checked + span {
+    color: var(--color-accent);
+}
+
+.item:hover > input:checked + span {
+    color: var(--color-accent-secondary);
+}

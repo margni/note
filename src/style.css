@@ -26,6 +26,15 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-edit:before {
+    content: '\270e';
+}
+.icon-add-tag:before {
+    content: '\270f';
+}
+.icon-tag:before {
+    content: '\1f5e9';
+}
 .icon-context-menu:before {
     content: '\22ee';
 }
