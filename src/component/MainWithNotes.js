@@ -7,10 +7,13 @@ import { tokenize } from '../helper/tokenize';
 // TODO Delimit
 // todo Tag Search
 // todo Ultimately client side search may become a problem, especially if someone has a significant number of notes.
-const filter = (query, notes, tokenizedQuery = tokenize(query)) =>
+const search = (query, notes, tokenizedQuery = tokenize(query)) =>
     tokenizedQuery
         ? notes.filter((note) => tokenizedQuery.test(note.text))
         : notes;
+
+const filter = (tag, notes) =>
+    tag ? notes.filter((note) => note.tags.includes(tag)) : notes;
 
 // TODO this is a temporary solution and should be refactored urgently.
 export default ({ onSignOut }) => {
@@ -25,6 +28,12 @@ export default ({ onSignOut }) => {
     } = useNotes();
     const [selectedNote, selectNote] = useState();
     const [query, setQuery] = useState('');
+    const [filterTag, setFilterTag] = useState();
+
+    const handleToggleFilterTag = useCallback(
+        (tag) => setFilterTag(filterTag !== tag ? tag : undefined),
+        [filterTag]
+    );
 
     useEffect(() => {
         const popstateNote = (event) => {
@@ -97,7 +106,8 @@ export default ({ onSignOut }) => {
 
     return (
         <Main
-            notes={filter(query, notes)}
+            filterTag={filterTag}
+            notes={search(query, filter(filterTag, notes))}
             onClose={(note) => close(note)}
             onCreate={() => selectNoteWithHistory(create())}
             onDelete={(note) => deleteAndBack(note)}
@@ -106,6 +116,7 @@ export default ({ onSignOut }) => {
             onSignOut={() => onSignOut()}
             onTogglePin={togglePin}
             onToggleTag={toggleTag}
+            onToggleFilterTag={handleToggleFilterTag}
             onUpdate={(note) => update(note)}
             placeholderMessage={placeholderMessage}
             query={query}

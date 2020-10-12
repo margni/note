@@ -3,10 +3,10 @@ import React, { useCallback } from 'react';
 import styles from './TagList.module.css';
 
 // TODO Not entirely sure these should be checkboxes.
-export const TagList = ({ tags, note, onToggleTag }) => {
+export const TagList = ({ tags, selectedTags, onToggleTag }) => {
     const handleToggleTag = useCallback(
-        (event) => onToggleTag(note, event.target.value),
-        [onToggleTag, note]
+        (event) => onToggleTag(event.target.value),
+        [onToggleTag]
     );
 
     // TODO Bring selected tags to the top.
@@ -17,14 +17,14 @@ export const TagList = ({ tags, note, onToggleTag }) => {
                     <label
                         className={styles.item}
                         title={
-                            note.tags?.includes(tag)
+                            selectedTags?.includes(tag)
                                 ? `Remove ‘${tag}’`
                                 : `Add ‘${tag}’`
                         }
                     >
                         <input
                             type="checkbox"
-                            checked={note.tags?.includes(tag)}
+                            checked={selectedTags?.includes(tag)}
                             onChange={handleToggleTag}
                             value={tag}
                         />

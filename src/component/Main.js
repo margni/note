@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { AppBar } from './AppBar';
+import { ContextMenu } from './ContextMenu';
 import { Empty } from './Empty';
 import { Fab } from './Fab';
 import { IconButton } from './IconButton';
-import { InstallNotifier } from './InstallNotifier';
-import { ContextMenu } from './ContextMenu';
-import { NoteList } from './NoteList';
 import { IconInput } from './IconInput';
+import { InstallNotifier } from './InstallNotifier';
+import { NoteList } from './NoteList';
+import { TagList } from './TagList';
 import { TextEditor } from './TextEditor';
 import { useAuth } from '../context/AuthContext';
 
@@ -15,6 +16,7 @@ import styles from './Main.module.css';
 import { ManageNoteTags } from './ManageNoteTags';
 
 export const Main = ({
+    filterTag,
     notes,
     onClose,
     onCreate,
@@ -23,6 +25,7 @@ export const Main = ({
     onSelect,
     onSignOut,
     onTogglePin,
+    onToggleFilterTag,
     onToggleTag,
     onUpdate,
     placeholderMessage,
@@ -46,6 +49,13 @@ export const Main = ({
             setTagMenuOpen(false);
         }
     }, [last, selectedNote]);
+
+    const handleToggleTag = useCallback(
+        (tag) => {
+            onToggleTag(selectedNote, tag);
+        },
+        [onToggleTag, selectedNote]
+    );
 
     return (
         <>
@@ -73,6 +83,11 @@ export const Main = ({
                                 {user.email}
                             </div>
                             <InstallNotifier />
+                            <TagList
+                                tags={tags}
+                                selectedTags={[filterTag]}
+                                onToggleTag={onToggleFilterTag}
+                            />
                         </ContextMenu>
                     )}
                 </AppBar>
@@ -118,7 +133,7 @@ export const Main = ({
                                 note={selectedNote}
                                 menuOpen={tagMenuOpen}
                                 onToggleMenu={setTagMenuOpen}
-                                onToggleTag={onToggleTag}
+                                onToggleTag={handleToggleTag}
                             />
                             {navigator.share && (
                                 <IconButton

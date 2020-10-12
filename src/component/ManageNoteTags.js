@@ -26,8 +26,12 @@ export const ManageNoteTags = ({
             primary={false}
             width="narrow"
         >
-            <NewTag onSaveTag={(tag) => onToggleTag(note, tag)} />
-            <TagList note={note} onToggleTag={onToggleTag} tags={tags} />
+            <NewTag onSaveTag={(tag) => onToggleTag(tag)} />
+            <TagList
+                selectedTags={note.tags}
+                onToggleTag={onToggleTag}
+                tags={tags}
+            />
         </ContextMenu>
     </>
 );

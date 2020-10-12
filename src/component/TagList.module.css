@@ -9,6 +9,10 @@
     padding: var(--space-x-small) var(--space-small);
 }
 
+li:not(:last-child) .item {
+    border-bottom: 1px solid var(--color-background);
+}
+
 .item > input {
     position: absolute;
     opacity: 0;
