@@ -12,6 +12,7 @@ export const IconButton = ({
     position,
     secondary,
     size,
+    title,
     type = 'button',
 }) => (
     <button
@@ -26,7 +27,8 @@ export const IconButton = ({
             styles
         )}
         disabled={disabled}
-        type={type}
         onClick={onClick}
+        title={title}
+        type={type}
     />
 );

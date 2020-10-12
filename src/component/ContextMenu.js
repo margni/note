@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { IconButton } from './IconButton';
+import { classNames } from '../helper/classNames';
 
 import styles from './ContextMenu.module.css';
 
@@ -10,16 +11,29 @@ export const ContextMenu = ({
     open,
     onToggle,
     name = 'context-menu',
+    title,
     width = 'normal',
 }) => (
     <div
-        className={`${styles.host} ${width === 'narrow' ? styles.narrow : ''}`}
+        className={classNames(
+            { host: true, narrow: width === 'narrow' },
+            styles
+        )}
     >
-        <IconButton name={name} onClick={() => onToggle(true)} secondary />
+        <IconButton
+            title={`Open ${title}`}
+            name={name}
+            onClick={() => onToggle(true)}
+            secondary
+        />
         {open && (
             <nav className={styles.menu}>
                 <div className={styles.close}>
-                    <IconButton name="close" onClick={() => onToggle(false)} />
+                    <IconButton
+                        name="close"
+                        onClick={() => onToggle(false)}
+                        title={`Close ${title}`}
+                    />
                 </div>
                 {children}
             </nav>

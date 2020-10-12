@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { IconButton } from './IconButton';
 import { IconInput } from './IconInput';
 
 import styles from './NewTag.module.css';
@@ -20,11 +21,17 @@ export const NewTag = ({ onSaveTag }) => {
     return (
         <form className={styles.host} onSubmit={save}>
             <IconInput
-                maxLength={30}
-                secondaryActionIcon="add-tag"
-                secondaryActionType="submit"
                 icon="edit"
+                maxLength={30}
                 onChange={setValue}
+                secondary={
+                    <IconButton
+                        name="add-tag"
+                        title="Save New Tag"
+                        type="submit"
+                    />
+                }
+                title="New Tag"
                 value={value}
             />
         </form>

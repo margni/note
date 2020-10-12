@@ -4,31 +4,49 @@ import { firstLine } from '../helper/firstLine';
 
 import { IconButton } from './IconButton';
 import { NoteTagList } from './NoteTagList';
+import { classNames } from '../helper/classNames';
 
 import styles from './NoteList.module.css';
 
-const NoteListItem = ({ note, onSelect, onTogglePin, selected }) => (
+// TODO Enable user UI customizations including having the toggle button on the main list.
+const NoteListItem = ({
+    note,
+    onSelect,
+    onTogglePin,
+    selected,
+    pinToggle = false,
+}) => (
     <li
-        className={`${styles.item} ${selected && `${styles.selected}`}`}
+        className={classNames(
+            { item: true, selected: selected, pinned: pinToggle },
+            styles
+        )}
         key={note.id}
     >
         <button className={styles.button} onClick={onSelect}>
-            <div className={styles.title}>{firstLine(note.text)}</div>
+            {!pinToggle && note.pin && (
+                <span className={`${styles.inlinePin} icon-pin`}></span>
+            )}
+            <span className={styles.title}>{firstLine(note.text)}</span>
             <div className={styles.tags}>
                 <NoteTagList note={note} />
             </div>
         </button>
-        <div className={styles.pin}>
-            <IconButton
-                key={note.id + note.pin}
-                name="pin"
-                onClick={onTogglePin}
-                secondary={!note.pin}
-            />
-        </div>
+        {pinToggle && (
+            <div className={styles.pin}>
+                <IconButton
+                    key={note.id + note.pin}
+                    name="pin"
+                    onClick={onTogglePin}
+                    secondary={!note.pin}
+                />
+            </div>
+        )}
     </li>
 );
 
+// TODO Another approach might be to put a divider in such as:
+//{notes[i-1]?.pin !== note.pin ? note.pin ? 'Pinned' : 'Everything Else' : ''}
 export const NoteList = ({ notes, onSelect, onTogglePin, selectedNote }) => (
     <ol className={styles.host}>
         {notes.map((note, i) => (

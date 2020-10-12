@@ -23,7 +23,7 @@ export const ManageNoteTags = ({
             name="tag"
             open={menuOpen}
             onToggle={onToggleMenu}
-            primary={false}
+            title="Tags"
             width="narrow"
         >
             <NewTag onSaveTag={(tag) => onToggleTag(tag)} />

@@ -17,20 +17,19 @@
     height: 3.2rem;
     margin: var(--space-x-small);
     padding: 0;
-    text-indent: var(--space-large);
     transition: all var(--animation-standard);
     width: 3.2rem;
 }
 
 .input:active,
 .input:focus,
-.hasValue {
+.input:not(:placeholder-shown) {
     border-radius: 0;
     background: var(--color-background);
     height: var(--space-x-large);
     margin: 0;
     outline: none;
-    padding: 0 var(--space-x-small);
+    padding: 0 var(--space-x-large);
     width: 100%;
 }
 
@@ -50,7 +49,7 @@
     width: var(--font-large);
 }
 
-.close {
+.secondary {
     position: absolute;
     right: 0;
     top: 0;

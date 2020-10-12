@@ -63,18 +63,30 @@ export const Main = ({
                 <AppBar>
                     <div className={styles.notePrimaryActions}>
                         <IconInput
-                            onSecondaryAction={() => onSearch('')}
-                            onChange={(query) => onSearch(query)}
+                            onChange={onSearch}
+                            secondary={
+                                <IconButton
+                                    onClick={() => onSearch('')}
+                                    title="Clear"
+                                    name="close"
+                                />
+                            }
+                            title="Search"
                             value={query}
                         />
                     </div>
                     {!selectedNote && (
-                        <ContextMenu open={menuOpen} onToggle={setMenuOpen}>
+                        <ContextMenu
+                            onToggle={setMenuOpen}
+                            open={menuOpen}
+                            title="Menu"
+                        >
                             <IconButton
                                 name="sign-out"
                                 onClick={onSignOut}
                                 position="right"
                                 secondary
+                                title="Sign-Out"
                             />
                             <div className={styles.user}>
                                 <h3 className={styles.userName}>
@@ -84,9 +96,9 @@ export const Main = ({
                             </div>
                             <InstallNotifier />
                             <TagList
-                                tags={tags}
-                                selectedTags={[filterTag]}
                                 onToggleTag={onToggleFilterTag}
+                                selectedTags={[filterTag]}
+                                tags={tags}
                             />
                         </ContextMenu>
                     )}
@@ -97,6 +109,7 @@ export const Main = ({
                             name="new"
                             onClick={() => onCreate()}
                             size="large"
+                            title="New Note"
                         />
                     </Fab>
                 )}
@@ -124,7 +137,15 @@ export const Main = ({
                         <div className={styles.notePrimaryActions}>
                             <IconButton
                                 name="back"
+                                title="Back"
                                 onClick={() => onClose(selectedNote)}
+                            />
+                            <IconButton
+                                key={selectedNote.id + selectedNote.pin}
+                                name="pin"
+                                title={selectedNote.pin ? 'Unpin' : 'Pin'}
+                                onClick={() => onTogglePin(selectedNote)}
+                                secondary={!selectedNote.pin}
                             />
                         </div>
                         <div className={styles.noteSecondaryActions}>
@@ -137,6 +158,7 @@ export const Main = ({
                             />
                             {navigator.share && (
                                 <IconButton
+                                    title="Share"
                                     name="share"
                                     onClick={() =>
                                         navigator.share({
@@ -147,6 +169,7 @@ export const Main = ({
                                 />
                             )}
                             <IconButton
+                                title="Delete"
                                 name="delete"
                                 onClick={() => onDelete(selectedNote)}
                                 secondary

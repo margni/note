@@ -26,12 +26,12 @@ li:not(:last-child) .item {
     text-overflow: ellipsis;
     white-space: nowrap;
     display: block;
-    color: var(--color-secondary);
+    color: var(--color-primary);
     transition: color var(--animation-standard);
 }
 
 .item:hover > input + span {
-    color: var(--color-primary);
+    color: var(--color-secondary);
 }
 
 .item > input:checked + span {
