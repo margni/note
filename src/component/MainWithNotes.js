@@ -29,6 +29,7 @@ export default ({ onSignOut }) => {
     const [selectedNote, selectNote] = useState();
     const [query, setQuery] = useState('');
     const [filterTag, setFilterTag] = useState();
+    const [filteredNotes, setFilteredNotes] = useState([]);
 
     const handleToggleFilterTag = useCallback(
         (tag) => setFilterTag(filterTag !== tag ? tag : undefined),
@@ -55,6 +56,10 @@ export default ({ onSignOut }) => {
         };
     }, [selectNote]);
 
+    useEffect(() => {
+        setFilteredNotes(search(query, filter(filterTag, notes)));
+    }, [filterTag, notes, query]);
+
     const selectNoteWithHistory = useCallback(
         (note) => {
             if (note) {
@@ -72,7 +77,7 @@ export default ({ onSignOut }) => {
         [selectedNote, selectNote]
     );
 
-    const deleteAndBack = useCallback(
+    const handleDelete = useCallback(
         (note) => {
             deleteNote(note);
 
@@ -81,7 +86,7 @@ export default ({ onSignOut }) => {
         [deleteNote]
     );
 
-    const close = useCallback(
+    const handleClose = useCallback(
         (note) => {
             if (note && !note.text.trim()) {
                 deleteNote(note);
@@ -91,6 +96,15 @@ export default ({ onSignOut }) => {
         },
         [deleteNote]
     );
+
+    const handleSelect = useCallback((note) => selectNoteWithHistory(note.id), [
+        selectNoteWithHistory,
+    ]);
+
+    const handleCreate = useCallback(() => selectNoteWithHistory(create()), [
+        create,
+        selectNoteWithHistory,
+    ]);
 
     // If notes haven't been loaded yet then just wait for firebase before
     // rendering anything.
@@ -107,17 +121,17 @@ export default ({ onSignOut }) => {
     return (
         <Main
             filterTag={filterTag}
-            notes={search(query, filter(filterTag, notes))}
-            onClose={(note) => close(note)}
-            onCreate={() => selectNoteWithHistory(create())}
-            onDelete={(note) => deleteAndBack(note)}
-            onSearch={(query) => setQuery(query)}
-            onSelect={(note) => selectNoteWithHistory(note.id)}
-            onSignOut={() => onSignOut()}
+            notes={filteredNotes}
+            onClose={handleClose}
+            onCreate={handleCreate}
+            onDelete={handleDelete}
+            onSearch={setQuery}
+            onSelect={handleSelect}
+            onSignOut={onSignOut}
+            onToggleFilterTag={handleToggleFilterTag}
             onTogglePin={togglePin}
             onToggleTag={toggleTag}
-            onToggleFilterTag={handleToggleFilterTag}
-            onUpdate={(note) => update(note)}
+            onUpdate={update}
             placeholderMessage={placeholderMessage}
             query={query}
             selectedNote={selectedNoteActual}

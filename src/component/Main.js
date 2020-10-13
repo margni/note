@@ -7,13 +7,13 @@ import { Fab } from './Fab';
 import { IconButton } from './IconButton';
 import { IconInput } from './IconInput';
 import { InstallNotifier } from './InstallNotifier';
+import { ManageNoteTags } from './ManageNoteTags';
 import { NoteList } from './NoteList';
 import { TagList } from './TagList';
 import { TextEditor } from './TextEditor';
 import { useAuth } from '../context/AuthContext';
 
 import styles from './Main.module.css';
-import { ManageNoteTags } from './ManageNoteTags';
 
 export const Main = ({
     filterTag,
@@ -24,8 +24,8 @@ export const Main = ({
     onSearch,
     onSelect,
     onSignOut,
-    onTogglePin,
     onToggleFilterTag,
+    onTogglePin,
     onToggleTag,
     onUpdate,
     placeholderMessage,
@@ -55,6 +55,14 @@ export const Main = ({
             onToggleTag(selectedNote, tag);
         },
         [onToggleTag, selectedNote]
+    );
+
+    const handleToggleFilterTag = useCallback(
+        (tag) => {
+            setMenuOpen(false);
+            onToggleFilterTag(tag);
+        },
+        [onToggleFilterTag]
     );
 
     return (
@@ -96,7 +104,7 @@ export const Main = ({
                             </div>
                             <InstallNotifier />
                             <TagList
-                                onToggleTag={onToggleFilterTag}
+                                onToggleTag={handleToggleFilterTag}
                                 selectedTags={[filterTag]}
                                 tags={tags}
                             />

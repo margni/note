@@ -18,7 +18,7 @@ export const App = () => (
                                 <MainWithNotes onSignOut={signOut} />
                             </React.Suspense>
                         ) : (
-                            <SignIn onClick={() => signInWithGoogle()} />
+                            <SignIn onClick={signInWithGoogle} />
                         )
                     }
                 </AuthContext.Consumer>
