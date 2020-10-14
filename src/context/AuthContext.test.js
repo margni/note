@@ -7,7 +7,7 @@ jest.mock('firebase/app', () => ({
     },
 }));
 
-jest.mock('../firebase', () => {
+jest.mock('../firebaseApp', () => {
     const auth = {
         onAuthStateChanged: jest.fn(),
         signInWithRedirect: jest.fn(),
@@ -21,7 +21,7 @@ jest.mock('../firebase', () => {
     };
 });
 
-import { Firebase } from '../firebase';
+import { firebaseApp } from '../firebaseApp';
 
 import { AuthProvider, useAuth } from './AuthContext';
 
@@ -46,6 +46,6 @@ test('AuthProvider', () => {
     fireEvent.click(getByText('SIGNOUT'));
     fireEvent.click(getByText('SIGNIN'));
 
-    expect(Firebase.auth().signOut).toHaveBeenCalled();
-    expect(Firebase.auth().signInWithRedirect).toHaveBeenCalled();
+    expect(firebaseApp.auth().signOut).toHaveBeenCalled();
+    expect(firebaseApp.auth().signInWithRedirect).toHaveBeenCalled();
 });

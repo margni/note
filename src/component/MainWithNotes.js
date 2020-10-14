@@ -16,7 +16,7 @@ const filter = (tag, notes) =>
     tag ? notes.filter((note) => note.tags.includes(tag)) : notes;
 
 // TODO this is a temporary solution and should be refactored urgently.
-export default ({ onSignOut }) => {
+const MainWithNotes = ({ onSignOut }) => {
     const {
         create,
         update,
@@ -139,3 +139,5 @@ export default ({ onSignOut }) => {
         />
     );
 };
+
+export default MainWithNotes;

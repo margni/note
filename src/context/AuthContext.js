@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 
-import { Firebase } from '../firebase';
+import { firebaseApp } from '../firebaseApp';
 
 export const AuthContext = React.createContext(null);
 
@@ -9,17 +9,17 @@ export const AuthContext = React.createContext(null);
 const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
 
-    Firebase.auth().signInWithRedirect(provider);
+    firebaseApp.auth().signInWithRedirect(provider);
 };
 
 const signOut = () => {
-    Firebase.auth().signOut();
+    firebaseApp.auth().signOut();
 };
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
-    useEffect(() => Firebase.auth().onAuthStateChanged(setUser), []);
+    useEffect(() => firebaseApp.auth().onAuthStateChanged(setUser), []);
 
     return (
         <AuthContext.Provider value={{ signInWithGoogle, signOut, user }}>

@@ -1,12 +1,12 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 
-import { Firebase } from '../firebase';
+import { firebaseApp } from '../firebaseApp';
 import { AuthContext } from './AuthContext';
 
 export const NoteContext = createContext();
 
-const collection = Firebase.firestore().collection('note');
+const collection = firebaseApp.firestore().collection('note');
 
 const create = (user) => {
     const ref = collection.doc();

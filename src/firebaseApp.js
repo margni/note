@@ -1,8 +1,10 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import 'firebase/analytics';
 
-const firebaseConfig = {
+// Initialize Firebase
+export const firebaseApp = firebase.initializeApp({
     apiKey: process.env.REACT_APP_FIREBASE_KEY,
     authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
     databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
@@ -10,14 +12,12 @@ const firebaseConfig = {
     storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
     messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
     appId: process.env.REACT_APP_FIREBASE_APP_ID,
-};
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+});
 
-// Initialize Firebase
-export const Firebase = firebase.initializeApp(firebaseConfig);
+firebaseApp.analytics();
 
-Firebase.firestore()
+firebaseApp
+    .firestore()
     .enablePersistence({ synchronizeTabs: true })
-    .then(
-        () => null,
-        (error) => console.error(error)
-    );
+    .catch((error) => console.error(error));
