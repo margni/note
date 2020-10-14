@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 
 jest.mock('firebase/app', () => ({}));
 
-jest.mock('../firebase', () => ({}));
+jest.mock('../firebaseApp', () => ({}));
 
 import { AuthContext } from '../context/AuthContext';
 

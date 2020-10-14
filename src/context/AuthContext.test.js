@@ -15,7 +15,7 @@ jest.mock('../firebaseApp', () => {
     };
 
     return {
-        Firebase: {
+        firebaseApp: {
             auth: () => auth,
         },
     };
