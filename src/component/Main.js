@@ -1,16 +1,15 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { AppBar } from './AppBar';
 import { ContextMenu } from './ContextMenu';
+import { Editor } from './Editor';
 import { Empty } from './Empty';
 import { Fab } from './Fab';
 import { IconButton } from './IconButton';
 import { IconInput } from './IconInput';
 import { InstallNotifier } from './InstallNotifier';
-import { ManageNoteTags } from './ManageNoteTags';
 import { NoteList } from './NoteList';
 import { SwitchList } from './SwitchList';
-import { TextEditor } from './TextEditor';
 import { useAuth } from '../context/AuthContext';
 
 import styles from './Main.module.css';
@@ -34,21 +33,22 @@ export const Main = ({
     tags,
 }) => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const [tagMenuOpen, setTagMenuOpen] = useState(false);
-    const [last, setLast] = useState();
     const { user } = useAuth();
 
-    useEffect(() => {
-        if (selectedNote) {
-            if (last && selectedNote.id !== last) {
-                setTagMenuOpen(false);
-            } else {
-                setLast(selectedNote.id);
-            }
-        } else {
-            setTagMenuOpen(false);
-        }
-    }, [last, selectedNote]);
+    const handleClose = useCallback(() => onClose(selectedNote), [
+        onClose,
+        selectedNote,
+    ]);
+
+    const handleDelete = useCallback(() => onDelete(selectedNote), [
+        onDelete,
+        selectedNote,
+    ]);
+
+    const handleTogglePin = useCallback(() => onTogglePin(selectedNote), [
+        onTogglePin,
+        selectedNote,
+    ]);
 
     const handleToggleTag = useCallback(
         (tag) => {
@@ -69,7 +69,7 @@ export const Main = ({
         <>
             <section className={styles.notes}>
                 <AppBar>
-                    <div className={styles.notePrimaryActions}>
+                    <div className={styles.primaryActions}>
                         <IconInput
                             onChange={onSearch}
                             secondary={
@@ -140,57 +140,15 @@ export const Main = ({
             </section>
             <div className={styles.placeholder}>{placeholderMessage}</div>
             {selectedNote && (
-                <section className={styles.note}>
-                    <AppBar>
-                        <div className={styles.notePrimaryActions}>
-                            <IconButton
-                                name="back"
-                                title="Back"
-                                onClick={() => onClose(selectedNote)}
-                            />
-                            <IconButton
-                                key={selectedNote.id + selectedNote.pin}
-                                name="pin"
-                                title={selectedNote.pin ? 'Unpin' : 'Pin'}
-                                onClick={() => onTogglePin(selectedNote)}
-                                secondary={!selectedNote.pin}
-                            />
-                        </div>
-                        <div className={styles.noteSecondaryActions}>
-                            <ManageNoteTags
-                                tags={tags}
-                                note={selectedNote}
-                                menuOpen={tagMenuOpen}
-                                onToggleMenu={setTagMenuOpen}
-                                onToggleTag={handleToggleTag}
-                            />
-                            {navigator.share && (
-                                <IconButton
-                                    title="Share"
-                                    name="share"
-                                    onClick={() =>
-                                        navigator.share({
-                                            text: selectedNote.text,
-                                        })
-                                    }
-                                    secondary
-                                />
-                            )}
-                            <IconButton
-                                title="Delete"
-                                name="delete"
-                                onClick={() => onDelete(selectedNote)}
-                                secondary
-                            />
-                        </div>
-                    </AppBar>
-                    <TextEditor
-                        debounce={1500}
-                        key={selectedNote.id}
-                        onChange={(text) => onUpdate({ ...selectedNote, text })}
-                        value={selectedNote.text}
-                    />
-                </section>
+                <Editor
+                    note={selectedNote}
+                    onClose={handleClose}
+                    onDelete={handleDelete}
+                    onTogglePin={handleTogglePin}
+                    onToggleTag={handleToggleTag}
+                    onUpdate={onUpdate}
+                    tags={tags}
+                />
             )}
         </>
     );

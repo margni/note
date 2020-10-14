@@ -7,25 +7,9 @@
     min-width: 0; /* Fix for text overflow in flex child. */
 }
 
-.note {
-    animation: slide-in var(--animation-short) ease;
-    border-left: 1px solid var(--color-border);
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    bottom: 0;
-    right: 0;
-}
-
-.notePrimaryActions {
+.primaryActions {
     display: flex;
     flex: 1;
-}
-
-.noteSecondaryActions {
-    display: flex;
 }
 
 .placeholder {
@@ -44,25 +28,9 @@
     margin: 0;
 }
 
-@keyframes slide-in {
-    0% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
 @media only screen and (min-width: 1280px) {
     .notes {
         flex-basis: 35%;
-    }
-
-    .note {
-        width: 65%;
     }
 
     .placeholder {

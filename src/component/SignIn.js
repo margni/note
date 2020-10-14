@@ -12,11 +12,11 @@ export const SignIn = ({ onClick }) => (
             Sign in with Google
         </button>
         <p className={styles.footer}>
-            ©{' '}
+            ©&nbsp;
             <a className={styles.link} href="http://margni.com">
                 Margni Ltd.
-            </a>{' '}
-            2020
+            </a>
+            &nbsp; 2020
         </p>
     </section>
 );

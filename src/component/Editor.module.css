@@ -1,0 +1,38 @@
+.host {
+    animation: slide-in var(--animation-short) ease;
+    border-left: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+}
+
+.notePrimaryActions {
+    display: flex;
+    flex: 1;
+}
+
+.noteSecondaryActions {
+    display: flex;
+}
+
+@keyframes slide-in {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    .host {
+        width: 65%;
+    }
+}
