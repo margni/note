@@ -6,7 +6,8 @@
 
 .item {
     display: block;
-    padding: var(--space-x-small) var(--space-small);
+    line-height: var(--space-x-large);
+    padding: 0 var(--space-small);
 }
 
 li:not(:last-child) .item {
