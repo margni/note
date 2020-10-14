@@ -3,7 +3,7 @@ import React from 'react';
 import { ContextMenu } from './ContextMenu';
 import { NewTag } from './NewTag';
 import { NoteTagList } from './NoteTagList';
-import { TagList } from './TagList';
+import { SwitchList } from './SwitchList';
 
 // TODO Keyboard, when menu opened if you start typing focus on the input input.
 // TODO Note using this model when you unselect the last instance of a tag it will immediately disappear, undecided if this is good or bad.
@@ -27,10 +27,10 @@ export const ManageNoteTags = ({
             width="narrow"
         >
             <NewTag onSaveTag={(tag) => onToggleTag(tag)} />
-            <TagList
-                selectedTags={note.tags}
-                onToggleTag={onToggleTag}
-                tags={tags}
+            <SwitchList
+                onToggle={onToggleTag}
+                selected={note.tags}
+                values={tags}
             />
         </ContextMenu>
     </>

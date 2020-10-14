@@ -9,7 +9,7 @@ import { IconInput } from './IconInput';
 import { InstallNotifier } from './InstallNotifier';
 import { ManageNoteTags } from './ManageNoteTags';
 import { NoteList } from './NoteList';
-import { TagList } from './TagList';
+import { SwitchList } from './SwitchList';
 import { TextEditor } from './TextEditor';
 import { useAuth } from '../context/AuthContext';
 
@@ -103,10 +103,10 @@ export const Main = ({
                                 {user.email}
                             </div>
                             <InstallNotifier />
-                            <TagList
-                                onToggleTag={handleToggleFilterTag}
-                                selectedTags={[filterTag]}
-                                tags={tags}
+                            <SwitchList
+                                onToggle={handleToggleFilterTag}
+                                selected={[filterTag]}
+                                values={tags}
                             />
                         </ContextMenu>
                     )}
