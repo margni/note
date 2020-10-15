@@ -14,6 +14,7 @@ import { useAuth } from '../context/AuthContext';
 
 import styles from './Main.module.css';
 
+// TODO This could do with a refactor.
 export const Main = ({
     filterTag,
     notes,
@@ -51,9 +52,7 @@ export const Main = ({
     ]);
 
     const handleToggleTag = useCallback(
-        (tag) => {
-            onToggleTag(selectedNote, tag);
-        },
+        (tag) => onToggleTag(selectedNote, tag),
         [onToggleTag, selectedNote]
     );
 

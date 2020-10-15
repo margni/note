@@ -4,13 +4,13 @@
 
 ### Picked For Development Next
 
--   Update prompt (and menu?)
+-   Archive/Soft Delete
+-   Enhance Tags UI
 -   Global context / account menu.
     -   Link to source
     -   Link to margni
     -   Toggle dark mode
     -   Toggle experimental features
--   Folders/Tags
 
 ### New Functionality
 
@@ -35,7 +35,6 @@
     -   See storage, would need to either charge or severely restrict asset size.
     -   Attach links may also be an option, rather than store the file.
 -   Encrypt note content so that only the creator can read it.
--   Tag notes for organisation.
 -   Soft delete (i.e. move to trash and delete after 24 hours or similar).
 -   Folders
 -   Make URLs clickable (without negatively impacting editing experience).
@@ -44,7 +43,7 @@
 
 ### Enhanced UX
 
--   Accessibility.
+-   Accessibility!
 -   Enhance keyboard navigation and add shortcuts.
 -   Drawer menu.
 -   Scroll shadows.

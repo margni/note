@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { AppBar } from './AppBar';
+import { ContextMenu } from './ContextMenu';
 import { IconButton } from './IconButton';
 import { ManageNoteTags } from './ManageNoteTags';
 import { TextEditor } from './TextEditor';
@@ -18,10 +19,12 @@ export const Editor = ({
 }) => {
     const [lastNote, setLastNote] = useState();
     const [tagMenuOpen, setTagMenuOpen] = useState(false);
+    const [toolbarOpen, setToolbarOpen] = useState(false);
 
     useEffect(() => {
         if (note.id !== lastNote) {
             setTagMenuOpen(false);
+            setToolbarOpen(false);
             setLastNote(note.id);
         }
     }, [lastNote, note]);
@@ -59,12 +62,19 @@ export const Editor = ({
                             secondary
                         />
                     )}
-                    <IconButton
-                        title="Delete"
-                        name="delete"
-                        onClick={onDelete}
-                        secondary
-                    />
+                    <ContextMenu
+                        onToggle={setToolbarOpen}
+                        open={toolbarOpen}
+                        title="Other Actions"
+                        width="toolbar"
+                    >
+                        <IconButton
+                            title="Delete"
+                            name="delete"
+                            onClick={onDelete}
+                            secondary
+                        />
+                    </ContextMenu>
                 </div>
             </AppBar>
             <TextEditor

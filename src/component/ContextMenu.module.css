@@ -2,6 +2,16 @@
     position: relative;
 }
 
+.overlay {
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 2;
+}
+
 .menu {
     animation: zoom-in var(--animation-short) ease;
     background: var(--color-alt-border);
@@ -10,16 +20,20 @@
     right: 0;
     top: 0;
     width: 100vw;
-    z-index: 1;
+    z-index: 3;
+}
+
+.toolbar .menu {
+    max-width: var(--space-x-large);
 }
 
 .close {
     float: right;
 }
 
-@media only screen and (min-width: 384px) {
+@media only screen and (min-width: 400px) {
     .menu {
-        max-width: 384px;
+        max-width: 368px;
         position: absolute;
     }
 

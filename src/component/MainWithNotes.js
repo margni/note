@@ -62,7 +62,7 @@ const MainWithNotes = ({ onSignOut }) => {
 
     const selectNoteWithHistory = useCallback(
         (note) => {
-            if (note) {
+            if (note && note !== selectedNote) {
                 if (!selectedNote) {
                     window.history.pushState({ selectedNote: note }, '');
                 } else {
