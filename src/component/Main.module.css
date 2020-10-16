@@ -30,12 +30,12 @@
 
 @media only screen and (min-width: 1024px) {
     .notes {
-        flex-basis: 35%;
+        flex-basis: 38%;
     }
 
     .placeholder {
         background: var(--color-border);
         display: flex;
-        flex-basis: 65%;
+        flex-basis: 62%;
     }
 }
