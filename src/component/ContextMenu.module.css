@@ -25,15 +25,16 @@
 
 .toolbar .menu {
     max-width: var(--space-x-large);
+    position: absolute;
 }
 
 .close {
     float: right;
 }
 
-@media only screen and (min-width: 400px) {
+@media only screen and (min-width: 384px) {
     .menu {
-        max-width: 368px;
+        max-width: 352px;
         position: absolute;
     }
 
