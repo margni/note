@@ -36,10 +36,16 @@ export const Main = ({
     const [menuOpen, setMenuOpen] = useState(false);
     const { user } = useAuth();
 
+    // TODO Performance test these callbacks.
     const handleClose = useCallback(() => onClose(selectedNote), [
         onClose,
         selectedNote,
     ]);
+
+    const handleCreate = useCallback(() => {
+        onSearch('');
+        onCreate();
+    }, [onSearch, onCreate]);
 
     const handleDelete = useCallback(() => onDelete(selectedNote), [
         onDelete,
@@ -69,18 +75,20 @@ export const Main = ({
             <section className={styles.notes}>
                 <AppBar>
                     <div className={styles.primaryActions}>
-                        <IconInput
-                            onChange={onSearch}
-                            secondary={
-                                <IconButton
-                                    onClick={() => onSearch('')}
-                                    title="Clear"
-                                    name="close"
-                                />
-                            }
-                            title="Search"
-                            value={query}
-                        />
+                        {(notes?.length || query) && (
+                            <IconInput
+                                onChange={onSearch}
+                                secondary={
+                                    <IconButton
+                                        onClick={() => onSearch('')}
+                                        title="Clear"
+                                        name="close"
+                                    />
+                                }
+                                title="Search"
+                                value={query}
+                            />
+                        )}
                     </div>
                     {!selectedNote && (
                         <ContextMenu
@@ -111,10 +119,10 @@ export const Main = ({
                     )}
                 </AppBar>
                 {!selectedNote && (
-                    <Fab>
+                    <Fab attention={!notes?.length && !query}>
                         <IconButton
                             name="new"
-                            onClick={() => onCreate()}
+                            onClick={handleCreate}
                             size="large"
                             title="New Note"
                         />

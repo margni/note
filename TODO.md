@@ -4,8 +4,8 @@
 
 ### Picked For Development Next
 
--   Archive/Soft Delete
 -   Enhance Tags UI
+-   Archive/Soft Delete - Soft delete then manual hard delete. (function for automatic hard delete in the future.)
 -   Global context / account menu.
     -   Link to source
     -   Link to margni
@@ -56,6 +56,8 @@
 -   Multi-lingual (especially considering there is so little text to translate).
 -   Rich editor (to allow perhaps caret style markdown editing, clickable links, etc.)
 -   Ability to explicitly toggle dark mode. (Perhaps add an options menu first.)
+-   Tag Tabs; customize quick access tags into tabs always visible.
+-   Select multiple tags... although is that AND or OR?
 
 ### Visual
 

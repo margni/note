@@ -39,3 +39,15 @@
         flex-basis: 62%;
     }
 }
+
+@media only screen and (min-width: 1920px) {
+    .notes {
+        flex-basis: 30%;
+    }
+
+    .placeholder {
+        background: var(--color-border);
+        display: flex;
+        flex-basis: 70%;
+    }
+}

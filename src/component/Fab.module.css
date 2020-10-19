@@ -1,8 +1,22 @@
 .host {
-    background: var(--color-background);
+    background: var(--color-alt-border);
     border-radius: 50%;
     bottom: var(--space-small);
     position: absolute;
     right: var(--space-small);
     z-index: 1;
+}
+
+.attention {
+    animation: pulse calc(var(--animation-long) * 2) alternate infinite ease;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 rgba(var(--color-accent-secondary-rgb), 0.333);
+    }
+
+    100% {
+        box-shadow: 0 0 0 100px rgba(var(--color-accent-secondary-rgb), 0.1);
+    }
 }

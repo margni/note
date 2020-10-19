@@ -13,12 +13,12 @@ const NoteListItem = ({
     note,
     onSelect,
     onTogglePin,
-    selected,
+    selected = false,
     pinToggle = false,
 }) => (
     <li
         className={classNames(
-            { item: true, selected: selected, pinned: pinToggle },
+            { item: true, selected, pinned: pinToggle },
             styles
         )}
         key={note.id}

@@ -10,7 +10,7 @@ export const IconButton = ({
     name,
     onClick = () => undefined,
     position,
-    secondary,
+    secondary = false,
     size,
     title,
     type = 'button',
@@ -22,7 +22,7 @@ export const IconButton = ({
                 [`icon-${name}`]: true,
                 large: size === 'large',
                 right: position === 'right',
-                secondary: secondary,
+                secondary,
             },
             styles
         )}

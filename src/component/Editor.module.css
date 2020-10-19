@@ -19,6 +19,18 @@
     display: flex;
 }
 
+@media only screen and (min-width: 1024px) {
+    .host {
+        width: 62%;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+    .host {
+        width: 70%;
+    }
+}
+
 @keyframes slide-in {
     0% {
         transform: translateX(100%);
@@ -28,11 +40,5 @@
     100% {
         transform: translateX(0);
         opacity: 1;
-    }
-}
-
-@media only screen and (min-width: 1024px) {
-    .host {
-        width: 62%;
     }
 }
