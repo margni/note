@@ -2,9 +2,9 @@
 
 [![Latest Build](https://travis-ci.org/margni/note.svg?branch=master)](https://travis-ci.org/github/margni/note)
 
-[![note.margni.com](public/logo192.png)](https://note.margni.com)
+[![mNote Logo](public/logo192.png)](https://note.margni.com)
 
-mNote is an extremely minimal note taking web app.
+[mNote](https://note.margni.com) is an extremely minimal note taking web app.
 
 _© Margni Ltd. 2020_
 
@@ -27,7 +27,6 @@ This is built as a technical demonstration for a relatively simple React+Firebas
 -   Pin Notes
 -   Search Notes
 -   Tag Notes
--   Multilingual; uses iconography instead of words to make the application language agnostic for sighted users (Better accessibility is on the roadmap).
 
 ### Appearance
 
@@ -35,9 +34,11 @@ Designed to be extremely minimal. Design and layout component architecture inspi
 
 CSS uses native variables rather than SASS and is also constructed using css modules for componentized CSS rather than something like BEM.
 
+Uses iconography to make the application largely language agnostic for sighted users (Better accessibility is on the roadmap).
+
 ### Technical
 
-Generally trying to keep things as simple as possible. Intentionally not Flux based, this approach may not be suitable for a real-world application.
+Some technical aspects may not be appropriate for real-world applications; not using 3rd party libraries and generally trying to keep things as simple as possible.
 
 ## ToDo
 
