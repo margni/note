@@ -16,6 +16,8 @@
     animation: zoom-in var(--animation-short) ease;
     background: var(--color-alt-border);
     font-size: var(--font-normal);
+    max-height: 80vh;
+    overflow: auto;
     position: fixed;
     right: 0;
     top: 0;

@@ -28,6 +28,7 @@ export const ManageNoteTags = ({
         >
             <NewTag onSaveTag={onToggleTag} />
             <SwitchList
+                icon="tag"
                 onToggle={onToggleTag}
                 selected={note.tags}
                 values={tags}

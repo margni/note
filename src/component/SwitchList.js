@@ -2,8 +2,8 @@ import React from 'react';
 
 import styles from './SwitchList.module.css';
 
-export const SwitchList = ({ onToggle, selected, values }) => (
-    // TODO Bring selected tags to the top?
+// TODO Bring selected tags to the top?
+export const SwitchList = ({ icon, onToggle, selected, values }) => (
     <ul className={styles.host}>
         {values.map((value, i) => (
             <li key={i}>
@@ -14,6 +14,7 @@ export const SwitchList = ({ onToggle, selected, values }) => (
                     role="switch"
                     type="button"
                 >
+                    {icon && <span className={`${styles.icon} icon-${icon}`} />}
                     {value}
                 </button>
             </li>

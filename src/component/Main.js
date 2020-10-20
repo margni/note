@@ -111,6 +111,7 @@ export const Main = ({
                             </div>
                             <InstallNotifier />
                             <SwitchList
+                                icon="tag"
                                 onToggle={handleToggleFilterTag}
                                 selected={[filterTag]}
                                 values={tags}
