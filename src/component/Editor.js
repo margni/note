@@ -12,6 +12,7 @@ export const Editor = ({
     note,
     onClose,
     onDelete,
+    onToggleArchive,
     onTogglePin,
     onToggleTag,
     onUpdate,
@@ -34,13 +35,21 @@ export const Editor = ({
             <AppBar>
                 <div className={styles.notePrimaryActions}>
                     <IconButton name="back" title="Back" onClick={onClose} />
-                    <IconButton
-                        key={note.id + note.pin}
-                        name="pin"
-                        title={note.pin ? 'Unpin' : 'Pin'}
-                        onClick={onTogglePin}
-                        secondary={!note.pin}
-                    />
+                    {note.archive ? (
+                        <IconButton
+                            title="Unarchive"
+                            name="unarchive"
+                            onClick={onToggleArchive}
+                        />
+                    ) : (
+                        <IconButton
+                            key={note.id + note.pin}
+                            name="pin"
+                            title={note.pin ? 'Unpin' : 'Pin'}
+                            onClick={onTogglePin}
+                            secondary={!note.pin}
+                        />
+                    )}
                 </div>
                 <div className={styles.noteSecondaryActions}>
                     <ManageNoteTags
@@ -68,6 +77,14 @@ export const Editor = ({
                         title="Other Actions"
                         width="toolbar"
                     >
+                        {!note.archive && (
+                            <IconButton
+                                title="Archive"
+                                name="archive"
+                                onClick={onToggleArchive}
+                                secondary
+                            />
+                        )}
                         <IconButton
                             title="Delete"
                             name="delete"

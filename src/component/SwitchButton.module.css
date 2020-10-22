@@ -1,0 +1,37 @@
+.host {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: var(--color-primary);
+    display: flex;
+    height: var(--space-x-large);
+    overflow: hidden;
+    padding: 0 var(--space-small);
+    text-align: left;
+    text-overflow: ellipsis;
+    transition: color var(--animation-standard);
+    white-space: nowrap;
+    width: 100%;
+}
+
+.host:hover,
+.host:focus {
+    color: var(--color-tertiary);
+    outline: none;
+}
+
+.host[aria-checked='true'] {
+    color: var(--color-accent);
+}
+
+.host[aria-checked='true']:hover,
+.host[aria-checked='true']:focus {
+    color: var(--color-accent-secondary);
+}
+
+.icon {
+    font-size: var(--font-large);
+    height: var(--font-x-large);
+    line-height: var(--font-x-large);
+    width: var(--font-x-large);
+}

@@ -15,11 +15,11 @@ export const IconInput = ({
     <div className={styles.host}>
         <span className={`${styles.icon} icon-${icon}`} />
         <input
-            placeholder=" "
-            title={title}
             className={styles.input}
             maxLength={maxLength}
             onChange={(event) => onChange(event.target.value)}
+            placeholder=" "
+            title={title}
             type="text"
             value={value}
         />

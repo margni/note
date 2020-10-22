@@ -1,0 +1,38 @@
+.host {
+    background: var(--color-border);
+    position: relative;
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: column;
+    min-width: 0; /* Fix for text overflow in flex child. */
+}
+
+.filterArchive {
+    border-top: 1px solid var(--color-background);
+}
+
+.primaryActions {
+    display: flex;
+    flex: 1;
+}
+
+.user {
+    margin: var(--space-small);
+}
+
+.userName {
+    font-weight: 400;
+    margin: 0;
+}
+
+@media only screen and (min-width: 1024px) {
+    .host {
+        flex-basis: 38%;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+    .host {
+        flex-basis: 30%;
+    }
+}

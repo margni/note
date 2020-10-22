@@ -26,6 +26,12 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-unarchive:before {
+    content: '\1f5c1';
+}
+.icon-archive:before {
+    content: '\1f5c4';
+}
 .icon-edit:before {
     content: '\270e';
 }

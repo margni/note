@@ -12,10 +12,10 @@ export const App = () => (
         <AuthProvider>
             <NoteProvider>
                 <AuthContext.Consumer>
-                    {({ signInWithGoogle, signOut, user }) =>
+                    {({ signInWithGoogle, user }) =>
                         user ? (
                             <React.Suspense fallback={''}>
-                                <MainWithNotes onSignOut={signOut} />
+                                <MainWithNotes />
                             </React.Suspense>
                         ) : (
                             <SignIn onClick={signInWithGoogle} />

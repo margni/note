@@ -12,6 +12,7 @@ const create = (user) => {
     const ref = collection.doc();
     ref.set({
         owner: user.uid,
+        archive: false,
         pin: false,
         tags: [],
         text: '',
@@ -23,6 +24,7 @@ const create = (user) => {
 const update = (note) =>
     collection.doc(note.id).set(
         {
+            archive: !!note.archive,
             pin: !!note.pin,
             tags: note.tags || [],
             text: note.text,
@@ -30,6 +32,9 @@ const update = (note) =>
         },
         { merge: true }
     );
+
+const toggleArchive = (note) =>
+    update({ ...note, archive: !note.archive, pin: false });
 
 const togglePin = (note) => update({ ...note, pin: !note.pin });
 
@@ -46,6 +51,7 @@ const deleteNote = (note) => collection.doc(note.id).delete();
 
 export const NoteProvider = ({ children }) => {
     const { user } = useContext(AuthContext);
+    const [hasArchive, setHasArchive] = useState(false);
     const [notes, setNotes] = useState();
     const [tags, setTags] = useState([]);
 
@@ -59,6 +65,8 @@ export const NoteProvider = ({ children }) => {
             .onSnapshot((snapshot) =>
                 setNotes(
                     snapshot.docs.map((doc) => ({
+                        archive: false,
+                        pin: false,
                         tags: [],
                         ...doc.data({ serverTimestamps: 'estimate' }),
                         id: doc.id,
@@ -70,8 +78,11 @@ export const NoteProvider = ({ children }) => {
     useEffect(() => {
         // TODO A counter for how many times each tag is used might be nice.
         if (!notes) {
+            setHasArchive(false);
             return;
         }
+
+        setHasArchive(notes.findIndex((note) => note.archive) > -1);
 
         let workingTags = [];
 
@@ -84,7 +95,7 @@ export const NoteProvider = ({ children }) => {
                 .filter((tag, index) => workingTags.indexOf(tag) === index)
                 .sort()
         );
-    }, [notes]);
+    }, [hasArchive, notes]);
 
     return (
         <NoteContext.Provider
@@ -92,10 +103,12 @@ export const NoteProvider = ({ children }) => {
                 create: () => create(user),
                 update,
                 deleteNote,
+                toggleArchive,
                 togglePin,
                 toggleTag,
                 notes,
                 tags,
+                hasArchive,
             }}
         >
             {children}

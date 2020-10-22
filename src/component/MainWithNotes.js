@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { Main } from './Main';
 import { useNotes } from '../context/NoteContext';
@@ -12,27 +12,39 @@ const search = (query, notes, tokenizedQuery = tokenize(query)) =>
         ? notes.filter((note) => tokenizedQuery.test(note.text))
         : notes;
 
-const filter = (tag, notes) =>
-    tag ? notes.filter((note) => note.tags.includes(tag)) : notes;
+const filter = (archive, tag, notes) =>
+    tag
+        ? notes.filter((note) => note.tags.includes(tag))
+        : notes.filter((note) => note.archive === archive);
 
 // TODO this is a temporary solution and should be refactored urgently.
-const MainWithNotes = ({ onSignOut }) => {
+const MainWithNotes = () => {
     const {
         create,
         update,
         deleteNote,
+        toggleArchive,
         togglePin,
         toggleTag,
         notes,
         tags,
+        hasArchive,
     } = useNotes();
     const [selectedNote, selectNote] = useState();
     const [query, setQuery] = useState('');
+    const [filterArchive, setFilterArchive] = useState(false);
     const [filterTag, setFilterTag] = useState();
-    const [filteredNotes, setFilteredNotes] = useState([]);
+
+    const handleToggleFilterArchive = useCallback(() => {
+        setFilterTag();
+        setFilterArchive(!filterArchive);
+    }, [filterArchive]);
 
     const handleToggleFilterTag = useCallback(
-        (tag) => setFilterTag(filterTag !== tag ? tag : undefined),
+        (tag) => {
+            setFilterArchive(false);
+            setFilterTag(filterTag !== tag ? tag : undefined);
+        },
         [filterTag]
     );
 
@@ -57,8 +69,13 @@ const MainWithNotes = ({ onSignOut }) => {
     }, [selectNote]);
 
     useEffect(() => {
-        setFilteredNotes(search(query, filter(filterTag, notes)));
-    }, [filterTag, notes, query]);
+        setFilterArchive(false);
+    }, [hasArchive]);
+
+    const filteredNotes = useMemo(
+        () => search(query, filter(filterArchive, filterTag, notes || [])),
+        [filterArchive, filterTag, notes, query]
+    );
 
     const selectNoteWithHistory = useCallback(
         (note) => {
@@ -97,6 +114,19 @@ const MainWithNotes = ({ onSignOut }) => {
         [deleteNote]
     );
 
+    const handleToggleArchive = useCallback(
+        (note) => {
+            if (note.archive) {
+                setFilterArchive(false);
+            } else {
+                window.history.back();
+            }
+
+            toggleArchive(note);
+        },
+        [toggleArchive]
+    );
+
     const handleSelect = useCallback((note) => selectNoteWithHistory(note.id), [
         selectNoteWithHistory,
     ]);
@@ -120,14 +150,17 @@ const MainWithNotes = ({ onSignOut }) => {
 
     return (
         <Main
+            filterArchive={filterArchive}
             filterTag={filterTag}
+            hasArchive={hasArchive}
             notes={filteredNotes}
             onClose={handleClose}
             onCreate={handleCreate}
             onDelete={handleDelete}
             onSearch={setQuery}
             onSelect={handleSelect}
-            onSignOut={onSignOut}
+            onToggleArchive={handleToggleArchive}
+            onToggleFilterArchive={handleToggleFilterArchive}
             onToggleFilterTag={handleToggleFilterTag}
             onTogglePin={togglePin}
             onToggleTag={toggleTag}

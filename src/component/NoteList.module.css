@@ -30,11 +30,6 @@
     width: 100%;
 }
 
-.pinned .button {
-    padding: 0 var(--space-medium) 0
-        calc(var(--space-x-large) + var(--space-small));
-}
-
 .button:focus,
 .button:hover {
     background: var(--color-alt-background);
@@ -53,13 +48,6 @@
 
 .selected .button {
     background: var(--color-alt-background);
-}
-
-.pin {
-    left: var(--space-x-small);
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
 }
 
 .title {

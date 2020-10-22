@@ -5,7 +5,7 @@
 ### Picked For Development Next
 
 -   Enhance Tags UI
--   Archive/Soft Delete - Soft delete then manual hard delete. (function for automatic hard delete in the future.)
+-   Soft Delete - Soft delete then manual hard delete. (function for automatic hard delete in the future.)
 -   Global context / account menu.
     -   Link to source
     -   Link to margni
@@ -14,7 +14,8 @@
 
 ### New Functionality
 
--   MD support, ideally live edit.
+-   MD support, ideally live edit, maybe something like https://www.npmjs.com/package/easymde
+    -   Or just the option to render markdown with something like https://github.com/markdown-it/markdown-it
 -   Analytics
 -   Add a router.
     -   This could be useful for share target, app shortcuts, publicly shared notes, etc.
