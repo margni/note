@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ContextMenu } from './ContextMenu';
 import { NewTag } from './NewTag';
 import { NoteTagList } from './NoteTagList';

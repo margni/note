@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styles from './AppBar.module.css';
 
 export const AppBar = ({ children }) => (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { IconButton } from './IconButton';
 import { IconInput } from './IconInput';

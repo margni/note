@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { classNames } from '../helper/classNames';
 
 import styles from './IconButton.module.css';

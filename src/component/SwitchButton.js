@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styles from './SwitchButton.module.css';
 
 export const SwitchButton = ({ checked, children, icon, onToggle }) => (

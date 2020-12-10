@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styles from './IconInput.module.css';
 
 // TODO Dont send space(s) only, but also dont trim trailing space

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import empty from '../image/empty.svg';
 import styles from './Empty.module.css';
 

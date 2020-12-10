@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styles from './NoteTagList.module.css';
 
 export const NoteTagList = ({ note }) => (

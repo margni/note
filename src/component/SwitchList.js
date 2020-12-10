@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { SwitchButton } from './SwitchButton';
 
 import styles from './SwitchList.module.css';

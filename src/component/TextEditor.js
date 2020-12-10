@@ -1,11 +1,11 @@
-import React from 'react';
+import { Component, createRef } from 'react';
 
 import styles from './TextEditor.module.css';
 
 // While this could be written as a function component using hooks it seems
 // easier to write it as a class component.
-export class TextEditor extends React.Component {
-    textarea;
+export class TextEditor extends Component {
+    textarea = createRef();
 
     constructor(props) {
         super(props);
@@ -17,9 +17,9 @@ export class TextEditor extends React.Component {
     }
 
     componentDidMount() {
-        const length = this.textarea.value.length;
-        this.textarea.focus();
-        this.textarea.setSelectionRange(length, length);
+        const length = this.textarea.current.value.length;
+        this.textarea.current.focus();
+        this.textarea.current.setSelectionRange(length, length);
     }
 
     componentWillUnmount() {
@@ -56,7 +56,7 @@ export class TextEditor extends React.Component {
                 className={styles.host}
                 onBlur={this.updateNow}
                 onChange={this.handleChange}
-                ref={(ref) => (this.textarea = ref)}
+                ref={this.textarea}
                 value={this.state.value}
             />
         );

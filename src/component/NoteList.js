@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { firstLine } from '../helper/firstLine';
 
 import { NoteTagList } from './NoteTagList';
