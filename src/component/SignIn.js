@@ -14,7 +14,10 @@ export const SignIn = ({ onClick }) => (
             <a className={styles.link} href="http://margni.com">
                 Margni Ltd.
             </a>
-            &nbsp; 2020
+            &nbsp; 2020 –{' '}
+            <a className={styles.link} href="https://github.com/margni/note">
+                Source
+            </a>
         </p>
     </section>
 );
