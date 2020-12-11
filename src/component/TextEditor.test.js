@@ -1,8 +1,11 @@
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import { TextEditor } from './TextEditor';
 
-jest.useFakeTimers();
+beforeEach(() => {
+    jest.useFakeTimers();
+});
 
 test('initializes, with focus', () => {
     const { container } = render(<TextEditor value="TEST" />);
@@ -13,10 +16,12 @@ test('initializes, with focus', () => {
 
 test('runs change deferred', () => {
     const change = jest.fn();
-    const { container } = render(<TextEditor value="TEST" onChange={change} />);
+    const { container } = render(<TextEditor value="BAR" onChange={change} />);
 
-    fireEvent.change(container.firstChild, { target: { value: 'BAR' } });
-    fireEvent.change(container.firstChild, { target: { value: 'FOO' } });
+    userEvent.type(
+        container.firstChild,
+        '{backspace}{backspace}{backspace}FOO'
+    );
 
     expect(change).not.toHaveBeenCalled();
 
@@ -28,15 +33,16 @@ test('runs change deferred', () => {
 
 test('runs change immediately when destroyed', () => {
     const change = jest.fn();
-    const { container, rerender } = render(
-        <TextEditor value="TEST" onChange={change} />
+    const { container, unmount } = render(
+        <TextEditor value="" onChange={change} />
     );
 
-    fireEvent.change(container.firstChild, { target: { value: 'FOO' } });
+    userEvent.type(container.firstChild, 'FOO');
 
     expect(change).not.toHaveBeenCalled();
 
-    rerender(<></>);
+    unmount();
 
+    expect(change).toHaveBeenCalledTimes(1);
     expect(change).toHaveBeenCalledWith('FOO');
 });
