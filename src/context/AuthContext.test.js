@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
-jest.mock('firebase/app', () => ({
+jest.mock('firebase/compat/app', () => ({
     auth: {
         GoogleAuthProvider: jest.fn(),
     },
