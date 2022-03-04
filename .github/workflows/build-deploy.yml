@@ -1,0 +1,72 @@
+name: Node.js CI
+
+on:
+    push:
+        branches: [master]
+    pull_request:
+        branches: [master]
+
+env:
+    NODE_ENV: production
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                node-version: [17.x]
+
+        steps:
+            - uses: actions/checkout@v2
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - run: npm ci
+            - run: npm test -- --coverage
+            - run: npm run build
+            - uses: actions/upload-artifact@v2
+              with:
+                  name: build
+                  path: build
+
+    preview:
+        needs: build
+        runs-on: ubuntu-latest
+        if: github.event.pull_request.base.ref == 'master'
+        outputs:
+            details_url: ${{ steps.deployPreview.outputs.details_url }}
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/download-artifact@v2
+              with:
+                  name: build
+                  path: build
+            - uses: FirebaseExtended/action-hosting-deploy@v0
+              id: deployPreview
+              with:
+                  repoToken: '${{ secrets.GITHUB_TOKEN }}'
+                  firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_MARGNI_NOTE }}'
+                  projectId: margni-note
+              env:
+                  FIREBASE_CLI_PREVIEWS: hostingchannels
+
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        if: github.ref == 'refs/heads/master'
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/download-artifact@v2
+              with:
+                  name: build
+                  path: build
+            - uses: FirebaseExtended/action-hosting-deploy@v0
+              with:
+                  repoToken: '${{ secrets.GITHUB_TOKEN }}'
+                  firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_MARGNI_NOTE }}'
+                  channelId: live
+                  projectId: margni-note
+              env:
+                  FIREBASE_CLI_PREVIEWS: hostingchannels
