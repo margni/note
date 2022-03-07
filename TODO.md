@@ -82,11 +82,11 @@
 
 ## Code Quality, CI, etc.
 
+-   Typescript!
 -   Currently using CamelCase file names, not sure why.
 -   Improve firebase encapsulation.
 -   Improve context usage.
 -   More tests.
 -   Tighten linting rules.
 -   Mutation testing; Stryker
--   Deploy tags?
 -   Build icon font (instead of using icomoon)

@@ -1,28 +1,25 @@
-import React from 'react';
+import { lazy, Suspense } from 'react';
 
 import { AuthContext, AuthProvider } from '../context/AuthContext';
-import { NoteProvider } from '../context/NoteContext';
-import { SignIn } from '../component/SignIn';
 import { InstallProvider } from '../context/InstallContext';
+import { SignIn } from '../component/SignIn';
 
-const MainWithNotes = React.lazy(() => import('../component/MainWithNotes'));
+const MainModule = lazy(() => import('./MainModule'));
 
 export const App = () => (
     <InstallProvider>
         <AuthProvider>
-            <NoteProvider>
-                <AuthContext.Consumer>
-                    {({ signInWithGoogle, user }) =>
-                        user ? (
-                            <React.Suspense fallback={''}>
-                                <MainWithNotes />
-                            </React.Suspense>
-                        ) : (
-                            <SignIn onClick={signInWithGoogle} />
-                        )
-                    }
-                </AuthContext.Consumer>
-            </NoteProvider>
+            <AuthContext.Consumer>
+                {({ signInWithGoogle, user }) =>
+                    user ? (
+                        <Suspense fallback={''}>
+                            <MainModule />
+                        </Suspense>
+                    ) : (
+                        <SignIn onClick={signInWithGoogle} />
+                    )
+                }
+            </AuthContext.Consumer>
         </AuthProvider>
     </InstallProvider>
 );

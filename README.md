@@ -1,7 +1,5 @@
 # mNote
 
-[![Latest Build](https://travis-ci.org/margni/note.svg?branch=master)](https://travis-ci.org/github/margni/note)
-
 [![mNote Logo](public/logo192.png)](https://note.margni.com)
 
 [mNote](https://note.margni.com) is an extremely minimal note taking web app.
@@ -23,6 +21,7 @@ This is built as a technical demonstration for a relatively simple React+Firebas
     -   Performant, minimal, native/app-like interface
     -   Dark theme support
     -   Share via Web Share API
+    -   Most code in module to reduce initial download size
 -   Uses Firestore realtime database to sync changes instantaneously
 -   Pin Notes
 -   Search Notes
@@ -32,13 +31,13 @@ This is built as a technical demonstration for a relatively simple React+Firebas
 
 Designed to be extremely minimal. Design and layout component architecture inspired by Material Design.
 
-CSS uses native variables rather than SASS and is also constructed using css modules for componentized CSS rather than something like BEM.
+CSS modules for componentized CSS rather than something like BEM. Avoided SASS/CSS-in-JS type solutions just for the sake of simplicity.
 
 Uses iconography to make the application largely language agnostic for sighted users (Better accessibility is on the roadmap).
 
 ### Technical
 
-Some technical aspects may not be appropriate for real-world applications; not using 3rd party libraries and generally trying to keep things as simple as possible.
+Designed for experimenting with PWA concepts and Firebase, some technical aspects may not be appropriate for real-world applications; Some hacky experimental code, poor test coverage, not using 3rd party libraries and generally trying to keep things more simple than one otherwise would.
 
 ## ToDo
 

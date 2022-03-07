@@ -1,31 +1,40 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
-jest.mock('firebase/compat/app', () => ({
-    auth: {
-        GoogleAuthProvider: jest.fn(),
-    },
-}));
+import { getAuth, signInWithRedirect } from 'firebase/auth';
 
-jest.mock('../firebaseApp', () => {
+jest.mock('firebase/auth', () => {
     const auth = {
         onAuthStateChanged: jest.fn(),
-        signInWithRedirect: jest.fn(),
         signOut: jest.fn(),
     };
 
     return {
-        firebaseApp: {
-            auth: () => auth,
-        },
+        getAuth: () => auth,
+        GoogleAuthProvider: jest.fn(),
+        signInWithRedirect: jest.fn(),
     };
 });
 
-import { firebaseApp } from '../firebaseApp';
+jest.mock('../firebaseApp', () => ({
+    firebaseApp: {},
+}));
 
 import { AuthProvider, useAuth } from './AuthContext';
 
-test('AuthProvider', () => {
+test('Render nothing until initialized', () => {
+    const TestComponent = () => <>TEST</>;
+
+    render(
+        <AuthProvider>
+            <TestComponent />
+        </AuthProvider>
+    );
+
+    expect(screen.queryByText('TEST')).not.toBeInTheDocument();
+});
+
+test('Render with user and provide sign in and out functions.', () => {
     const TestComponent = () => {
         const context = useAuth();
 
@@ -37,15 +46,19 @@ test('AuthProvider', () => {
         );
     };
 
-    const { getByText } = render(
+    getAuth().onAuthStateChanged.mockImplementationOnce((fn) =>
+        fn({ displayName: 'Test User' })
+    );
+
+    render(
         <AuthProvider>
             <TestComponent />
         </AuthProvider>
     );
 
-    fireEvent.click(getByText('SIGNOUT'));
-    fireEvent.click(getByText('SIGNIN'));
+    fireEvent.click(screen.getByText('SIGNOUT'));
+    fireEvent.click(screen.getByText('SIGNIN'));
 
-    expect(firebaseApp.auth().signOut).toHaveBeenCalled();
-    expect(firebaseApp.auth().signInWithRedirect).toHaveBeenCalled();
+    expect(getAuth().signOut).toHaveBeenCalled();
+    expect(signInWithRedirect).toHaveBeenCalled();
 });

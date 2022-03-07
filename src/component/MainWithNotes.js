@@ -18,7 +18,7 @@ const filter = (archive, tag, notes) =>
         : notes.filter((note) => note.archive === archive);
 
 // TODO this is a temporary solution and should be refactored urgently.
-const MainWithNotes = () => {
+export const MainWithNotes = () => {
     const {
         create,
         update,
@@ -127,20 +127,15 @@ const MainWithNotes = () => {
         [toggleArchive]
     );
 
-    const handleSelect = useCallback((note) => selectNoteWithHistory(note.id), [
-        selectNoteWithHistory,
-    ]);
+    const handleSelect = useCallback(
+        (note) => selectNoteWithHistory(note.id),
+        [selectNoteWithHistory]
+    );
 
-    const handleCreate = useCallback(() => selectNoteWithHistory(create()), [
-        create,
-        selectNoteWithHistory,
-    ]);
-
-    // If notes haven't been loaded yet then just wait for firebase before
-    // rendering anything.
-    if (!notes) {
-        return null;
-    }
+    const handleCreate = useCallback(
+        () => selectNoteWithHistory(create()),
+        [create, selectNoteWithHistory]
+    );
 
     const selectedNoteActual =
         selectedNote && notes.find((note) => note.id === selectedNote);
@@ -172,5 +167,3 @@ const MainWithNotes = () => {
         />
     );
 };
-
-export default MainWithNotes;

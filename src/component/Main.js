@@ -27,25 +27,25 @@ export const Main = ({
     tags,
 }) => {
     // TODO Performance test these callbacks.
-    const handleClose = useCallback(() => onClose(selectedNote), [
-        onClose,
-        selectedNote,
-    ]);
+    const handleClose = useCallback(
+        () => onClose(selectedNote),
+        [onClose, selectedNote]
+    );
 
-    const handleDelete = useCallback(() => onDelete(selectedNote), [
-        onDelete,
-        selectedNote,
-    ]);
+    const handleDelete = useCallback(
+        () => onDelete(selectedNote),
+        [onDelete, selectedNote]
+    );
 
     const handleToggleArchive = useCallback(
         () => onToggleArchive(selectedNote),
         [onToggleArchive, selectedNote]
     );
 
-    const handleTogglePin = useCallback(() => onTogglePin(selectedNote), [
-        onTogglePin,
-        selectedNote,
-    ]);
+    const handleTogglePin = useCallback(
+        () => onTogglePin(selectedNote),
+        [onTogglePin, selectedNote]
+    );
 
     const handleToggleTag = useCallback(
         (tag) => onToggleTag(selectedNote, tag),
