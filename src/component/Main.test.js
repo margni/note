@@ -1,6 +1,8 @@
 import { render } from '@testing-library/react';
 
-jest.mock('firebase/app', () => ({}));
+jest.mock('firebase/auth', () => ({
+    getAuth: jest.fn(),
+}));
 
 jest.mock('../firebaseApp', () => ({}));
 

@@ -1,37 +1,52 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import firebase from 'firebase/compat/app';
+import {
+    collection,
+    doc,
+    deleteDoc,
+    enableIndexedDbPersistence,
+    getFirestore,
+    onSnapshot,
+    orderBy,
+    query,
+    serverTimestamp,
+    setDoc,
+    updateDoc,
+    where,
+} from 'firebase/firestore';
 
 import { firebaseApp } from '../firebaseApp';
-import { AuthContext } from './AuthContext';
+
+import { useAuth } from './AuthContext';
 
 export const NoteContext = createContext();
 
-const collection = firebaseApp.firestore().collection('note');
+const db = getFirestore(firebaseApp);
+
+enableIndexedDbPersistence(db).catch(console.error);
+
+const noteCollection = collection(db, 'note');
 
 const create = (user) => {
-    const ref = collection.doc();
-    ref.set({
+    const ref = doc(noteCollection);
+    setDoc(ref, {
         owner: user.uid,
         archive: false,
         pin: false,
         tags: [],
         text: '',
-        time: firebase.firestore.FieldValue.serverTimestamp(),
+        time: serverTimestamp(),
     });
     return ref.id;
 };
 
 const update = (note) =>
-    collection.doc(note.id).set(
-        {
-            archive: !!note.archive,
-            pin: !!note.pin,
-            tags: note.tags || [],
-            text: note.text,
-            time: firebase.firestore.FieldValue.serverTimestamp(),
-        },
-        { merge: true }
-    );
+    updateDoc(doc(noteCollection, note.id), {
+        archive: !!note.archive,
+        pin: !!note.pin,
+        tags: note.tags || [],
+        text: note.text,
+        time: serverTimestamp(),
+    });
 
 const toggleArchive = (note) =>
     update({ ...note, archive: !note.archive, pin: false });
@@ -47,10 +62,10 @@ const toggleTag = (note, tag) =>
                 : [...note.tags, tag].sort(),
     });
 
-const deleteNote = (note) => collection.doc(note.id).delete();
+const deleteNote = (note) => deleteDoc(doc(noteCollection, note.id));
 
 export const NoteProvider = ({ children }) => {
-    const { user } = useContext(AuthContext);
+    const { user } = useAuth();
     const [hasArchive, setHasArchive] = useState(false);
     const [notes, setNotes] = useState();
     const [tags, setTags] = useState([]);
@@ -58,11 +73,14 @@ export const NoteProvider = ({ children }) => {
     useEffect(() => {
         if (!user) return;
 
-        return collection
-            .where('owner', '==', user.uid)
-            .orderBy('pin', 'desc')
-            .orderBy('time', 'desc')
-            .onSnapshot((snapshot) =>
+        return onSnapshot(
+            query(
+                noteCollection,
+                where('owner', '==', user.uid),
+                orderBy('pin', 'desc'),
+                orderBy('time', 'desc')
+            ),
+            (snapshot) =>
                 setNotes(
                     snapshot.docs.map((doc) => ({
                         archive: false,
@@ -72,7 +90,7 @@ export const NoteProvider = ({ children }) => {
                         id: doc.id,
                     }))
                 )
-            );
+        );
     }, [user]);
 
     useEffect(() => {
@@ -97,7 +115,7 @@ export const NoteProvider = ({ children }) => {
         );
     }, [hasArchive, notes]);
 
-    return (
+    return notes ? (
         <NoteContext.Provider
             value={{
                 create: () => create(user),
@@ -113,7 +131,7 @@ export const NoteProvider = ({ children }) => {
         >
             {children}
         </NoteContext.Provider>
-    );
+    ) : null;
 };
 
 export const useNotes = () => useContext(NoteContext);

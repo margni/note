@@ -1,10 +1,7 @@
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
-import 'firebase/compat/analytics';
+import { getAnalytics } from 'firebase/analytics';
+import { initializeApp } from 'firebase/app';
 
-// Initialize Firebase
-export const firebaseApp = firebase.initializeApp({
+export const firebaseApp = initializeApp({
     apiKey: process.env.REACT_APP_FIREBASE_KEY,
     authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
     databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
@@ -15,9 +12,4 @@ export const firebaseApp = firebase.initializeApp({
     measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 });
 
-firebaseApp.analytics();
-
-firebaseApp
-    .firestore()
-    .enablePersistence({ synchronizeTabs: true })
-    .catch((error) => console.error(error));
+export const analytics = getAnalytics();
