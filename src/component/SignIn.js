@@ -5,7 +5,13 @@ import styles from './SignIn.module.css';
 // todo logo centered in same location as loading logo (but not animated obviously)
 export const SignIn = ({ onClick }) => (
     <section className={styles.host}>
-        <img alt="mNote" className={styles.image} src={logo} />
+        <img
+            alt="mNote"
+            className={styles.image}
+            height="512"
+            src={logo}
+            width="512"
+        />
         <button className={styles.button} onClick={onClick}>
             Sign in with Google
         </button>
