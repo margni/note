@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 
 import { AuthContext, AuthProvider } from '../context/AuthContext';
 import { InstallProvider } from '../context/InstallContext';
+import { Loader } from '../component/Loader';
 import { SignIn } from '../component/SignIn';
 
 const MainModule = lazy(() => import('./MainModule'));
@@ -12,7 +13,7 @@ export const App = () => (
             <AuthContext.Consumer>
                 {({ signInWithGoogle, user }) =>
                     user ? (
-                        <Suspense fallback={''}>
+                        <Suspense fallback={<Loader />}>
                             <MainModule />
                         </Suspense>
                     ) : (
